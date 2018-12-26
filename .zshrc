@@ -45,7 +45,6 @@ zplugin load zsh-users/zsh-autosuggestions
 zplugin load zsh-users/zsh-completions
 
 ### SPACESHIP PROMPT CONFIG
-precmd() { print "" } # newline before each prompt
 SPACESHIP_PROMPT_ORDER=(
   time          # time stamps
   user          # Username section
@@ -60,7 +59,8 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
-SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_PROMPT_ADD_NEWLINE=true
 SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "
 
