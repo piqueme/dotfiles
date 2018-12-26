@@ -2,6 +2,7 @@
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 alias ls='ls --color=auto'
+alias cl='clear'
 alias nv='nvim'
 
 ### Added by Zplugin's installer
@@ -11,3 +12,4 @@ autoload -Uz _zplugin
 ### End of Zplugin's installer chunk
 
 zplugin load zsh-users/zsh-syntax-highlighting
+zplugin load zsh-users/zsh-autosuggestions
