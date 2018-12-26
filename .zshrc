@@ -45,12 +45,15 @@ zplugin load zsh-users/zsh-autosuggestions
 zplugin load zsh-users/zsh-completions
 
 ### SPACESHIP PROMPT CONFIG
+precmd() { print "" } # newline before each prompt
 SPACESHIP_PROMPT_ORDER=(
+  time          # time stamps
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-  exec_time     # Execution time
+  node          # Node version
+  pyenv         # Pyenv section
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
