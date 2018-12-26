@@ -5,6 +5,24 @@ alias ls='ls --color=auto'
 alias cl='clear'
 alias nv='nvim'
 
+# Git aliases
+alias ga='git add'
+alias gaa='git add --all'
+alias gb='git branch'
+alias gbd='git branch -D'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit -a -m'
+alias gcn='git commit --amend'
+alias gcan='git comit -a --amend'
+alias gnb='git checkout -b'
+alias gch='git checkout'
+alias gl='git log'
+alias gpl='git pull'
+alias gpr='git pull --rebase origin master'
+alias gps='git push'
+alias gs='git status'
+
 ### Autocompletion
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%sm' -t '%j' ~/.zcompdump 2>/dev/null)
