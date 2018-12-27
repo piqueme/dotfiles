@@ -3,6 +3,7 @@ export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 alias ls='ls --color=auto'
 alias cl='clear'
+alias et='exit'
 alias nv='nvim'
 
 # Git aliases
@@ -51,6 +52,11 @@ setopt always_to_end # move cursor to end if word had one match
 zstyle ':completion:*' menu select # selection completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
+
+### FZF SETUP
+dotfile="$(readlink -f "${(%):-%N}")"
+dotdir="$(dirname "$dotfile")"
+source "$dotdir/fzf/main.zsh"
 
 ### Added by Zplugin's installer
 source '/home/obe/.zplugin/bin/zplugin.zsh'
