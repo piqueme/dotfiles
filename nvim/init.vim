@@ -9,3 +9,8 @@ syntax on
 " color scheme settings
 set termguicolors
 color dracula
+
+set ts=2
+set sw=2
+set expandtab
+imap jk <Esc>
