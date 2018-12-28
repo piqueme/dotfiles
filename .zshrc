@@ -58,6 +58,9 @@ dotfile="$(readlink -f "${(%):-%N}")"
 dotdir="$(dirname "$dotfile")"
 source "$dotdir/fzf/main.zsh"
 
+### VI MODE
+bindkey -M viins 'jk' vi-cmd-mode
+
 ### Added by Zplugin's installer
 source '/home/obe/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin

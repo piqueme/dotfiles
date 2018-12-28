@@ -13,6 +13,7 @@ fzf-paste-file() {
 }
 zle -N fzf-paste-file
 bindkey '^l' fzf-paste-file
+
 # search projects
 # search directories
 # 	from home
