@@ -5,6 +5,7 @@ alias ls='ls --color=auto'
 alias cl='clear'
 alias et='exit'
 alias nv='nvim'
+alias hd='cd $HOME'
 
 export KEYTIMEOUT=10
 
