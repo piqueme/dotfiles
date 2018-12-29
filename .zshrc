@@ -23,6 +23,7 @@ alias gpl='git pull'
 alias gpr='git pull --rebase origin master'
 alias gps='git push'
 alias gs='git status'
+alias gd="cd $(git rev-parse --show-toplevel)"
 
 ### Autocompletion
 autoload -Uz compinit
