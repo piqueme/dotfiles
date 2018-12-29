@@ -10,7 +10,9 @@ syntax on
 set termguicolors
 color dracula
 
-set ts=2
-set sw=2
+set tabstop=2
+set shiftwidth=2
 set expandtab
 imap jk <Esc>
+vmap jk <Esc> 
+
