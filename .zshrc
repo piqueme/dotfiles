@@ -6,6 +6,8 @@ alias cl='clear'
 alias et='exit'
 alias nv='nvim'
 
+export KEYTIMEOUT=10
+
 # Git aliases
 alias ga='git add'
 alias gaa='git add --all'
