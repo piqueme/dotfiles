@@ -6,6 +6,8 @@ alias cl='clear'
 alias et='exit'
 alias nv='nvim'
 alias hd='cd $HOME'
+alias md='mkdir'
+alias rd='rm -rf'
 
 export KEYTIMEOUT=10
 
@@ -18,7 +20,7 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias gca='git commit -a -m'
 alias gcn='git commit --amend'
-alias gcan='git comit -a --amend'
+alias gcan='git commit -a --amend'
 alias gnb='git checkout -b'
 alias gch='git checkout'
 alias gl='git log'
@@ -26,7 +28,9 @@ alias gpl='git pull'
 alias gpr='git pull --rebase origin master'
 alias gps='git push'
 alias gs='git status'
-alias gd="cd $(git rev-parse --show-toplevel)"
+gd() {
+  cd $(git rev-parse --show-toplevel)
+}
 
 ### Autocompletion
 autoload -Uz compinit
