@@ -7,6 +7,7 @@ fzf-edit-file() {
   local filename
   filename=$(fd -Lp -t f | fzf) &&
   nv "$filename"
+  zle reset-prompt
 }
 zle -N fzf-edit-file
 bindkey 'fef' fzf-edit-file
@@ -15,6 +16,7 @@ fzf-edit-file-home() {
   local filename
   filename=$(fd -Lp -t f '' $HOME | fzf) &&
   nv "$filename"
+  zle reset-prompt
 }
 zle -N fzf-edit-file-home
 bindkey 'feh' fzf-edit-file-home
@@ -24,6 +26,7 @@ fzf-edit-file-git() {
   gitroot=$(git rev-parse --show-toplevel) &&
   filename=$(fd -Lp -t f '' $gitroot | fzf) &&
   nv "$filename"
+  zle reset-prompt
 }
 zle -N fzf-edit-file-git
 bindkey 'feg' fzf-edit-file-git
@@ -32,6 +35,7 @@ fzf-change-dir() {
   local dirname
   dirname=$(fd -Lp -t d | fzf) &&
   cd "$dirname"
+  zle reset-prompt
 }
 zle -N fzf-change-dir
 bindkey 'fsr' fzf-change-dir
@@ -40,6 +44,7 @@ fzf-change-dir-home() {
   local dirname
   dirname=$(fd -Lp -t d '' $HOME | fzf) &&
   cd "$dirname"
+  zle reset-prompt
 }
 zle -N fzf-change-dir-home
 bindkey 'fsh' fzf-change-dir-home
@@ -49,6 +54,7 @@ fzf-change-dir-git() {
   gitroot=$(git rev-parse --show-toplevel) &&
   dirname=$(fd -Lp -t d '' $dirname | fzf) &&
   cd "$dirname"
+  zle reset-prompt
 }
 zle -N fzf-change-dir-git
 bindkey 'fsg' fzf-change-dir-git
