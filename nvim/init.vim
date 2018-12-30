@@ -13,6 +13,8 @@ color dracula
 set tabstop=2
 set shiftwidth=2
 set expandtab
-imap jk <Esc>
-vmap jk <Esc> 
+
+inoremap jk <esc>
+vnoremap jk <esc> 
+inoremap <esc> <nop>
 
