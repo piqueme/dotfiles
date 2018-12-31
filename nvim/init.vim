@@ -14,6 +14,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set number
+set textwidth=100
+
 inoremap jk <esc>
 vnoremap jk <esc> 
 inoremap <esc> <nop>
