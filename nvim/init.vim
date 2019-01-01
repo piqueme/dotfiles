@@ -21,3 +21,5 @@ inoremap jk <esc>
 vnoremap jk <esc> 
 inoremap <esc> <nop>
 
+nnoremap ;se :edit ~/.config/nvim/init.vim<cr>
+nnoremap ;ss :source ~/.config/nvim/init.vim<cr>
