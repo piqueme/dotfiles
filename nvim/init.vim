@@ -16,6 +16,8 @@ Plug 'tpope/vim-commentary'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 
@@ -86,35 +88,17 @@ nnoremap <leader>gr :Gread<cr>
 vnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gw :Gwrite<cr>
 vnoremap <leader>gw :Gwrite<cr>
-
-" COMMAND LINE VS VIM
-" vim is useful for looking at files
-" reset?
-"   mostly useful from history view (all, file)
-"   reasonable from fuzzy history
-" diff?
-"   useful in many cases - need to see text
-"   diff with stage
-"   diff with HEAD
-"   diff with HEAD^
-"   diff with origin branch
-"   diff with origin master
-" interactively staging / unstaging changes, committing
-" push / pull?
-"   nope, never really
-"
-" VIEWS
-"   History view
-"     scroll through history with diff
-"     in history window
-"       reset (current, all)
-"       checkout (current, all)
-"   Fuzzy
-"     branches
-"     file history
-"     branch history
-"     ops -> reset, checkout, diff
-"   Diff view
-"     close -> close history if open? (stretch)
-"     read [selected]
-"   Whenever
+" git history view
+nnoremap <leader>gh :Gitv!<cr>
+vnoremap <leader>gh :Gitv!<cr>
+nnoremap <leader>gl :Gitv<cr>
+" TODO: history fuzzy search w/ FZF
+" TODO: fix broken gitv-fugitive incompatibility
+let g:signify_vcs_list = [ 'git' ]
+nmap <leader>gn <Plug>(signify-prev-hunk)
+nmap <leader>gm <Plug>(signify-next-hunk)
+nmap <leader>gb 9999<leader>gn
+omap ig <Plug>(signify-motion-inner-pending)
+xmap ig <Plug>(signify-motion-inner-visual)
+omap ag <Plug>(signify-motion-outer-pending)
+xmap ag <Plug>(signify-motion-outer-visual)
