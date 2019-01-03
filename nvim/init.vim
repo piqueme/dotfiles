@@ -14,6 +14,9 @@ Plug 'junegunn/fzf.vim'
 " commentary (generic commenting)
 Plug 'tpope/vim-commentary'
 
+" Git
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 let mapleader = ';'
@@ -65,3 +68,53 @@ nnoremap <leader>fs :w<cr>
 nmap <leader>ac <Plug>Commentary
 vmap <leader>ac <Plug>Commentary
 
+""" GIT
+" depends on vim-fugitive
+nnoremap <leader>gs :Gstatus<cr>
+" fetch
+nnoremap <leader>gf :Gfetch<cr>
+" vertical diff current - staged
+nnoremap <leader>gds :Gvdiff<cr>
+" vertical diff current - HEAD
+nnoremap <leader>gdp :Gvdiff HEAD^<cr>
+" vertical diff current - origin
+nnoremap <leader>gdo :Gvdiff @{upstream}<cr>
+" vertical diff current - master
+nnoremap <leader>gdm :Gvdiff master<cr>
+" short mappings for taking / removing diff changes
+nnoremap <leader>gr :Gread<cr>
+vnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gw :Gwrite<cr>
+vnoremap <leader>gw :Gwrite<cr>
+
+" COMMAND LINE VS VIM
+" vim is useful for looking at files
+" reset?
+"   mostly useful from history view (all, file)
+"   reasonable from fuzzy history
+" diff?
+"   useful in many cases - need to see text
+"   diff with stage
+"   diff with HEAD
+"   diff with HEAD^
+"   diff with origin branch
+"   diff with origin master
+" interactively staging / unstaging changes, committing
+" push / pull?
+"   nope, never really
+"
+" VIEWS
+"   History view
+"     scroll through history with diff
+"     in history window
+"       reset (current, all)
+"       checkout (current, all)
+"   Fuzzy
+"     branches
+"     file history
+"     branch history
+"     ops -> reset, checkout, diff
+"   Diff view
+"     close -> close history if open? (stretch)
+"     read [selected]
+"   Whenever
