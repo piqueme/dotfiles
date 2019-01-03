@@ -19,6 +19,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'mhinz/vim-signify'
 
+" basic motion
+Plug 'tpope/vim-surround'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'jeetsukumaran/vim-indentwise'
+
 call plug#end()
 
 let mapleader = ';'
@@ -102,3 +107,4 @@ omap ig <Plug>(signify-motion-inner-pending)
 xmap ig <Plug>(signify-motion-inner-visual)
 omap ag <Plug>(signify-motion-outer-pending)
 xmap ag <Plug>(signify-motion-outer-visual)
+
