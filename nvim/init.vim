@@ -11,6 +11,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" commentary (generic commenting)
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 let mapleader = ';'
@@ -51,4 +54,14 @@ nnoremap <leader>ff :FzfGFiles<cr>
 nnoremap <leader>it :FzfTags<cr>
 nnoremap <leader>bf :FzfBuffers<cr>
 nnoremap <leader>gc :FzfCommits<cr>
+
+""" FILE UTILITIES
+nnoremap <leader>fw :wq<cr>
+nnoremap <leader>fq :q<cr>
+nnoremap <leader>fs :w<cr>
+
+""" ANNOTATION
+" depends on vim-commentary
+nmap <leader>ac <Plug>Commentary
+vmap <leader>ac <Plug>Commentary
 
