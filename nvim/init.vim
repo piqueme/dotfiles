@@ -97,6 +97,8 @@ vnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gh :Gitv!<cr>
 vnoremap <leader>gh :Gitv!<cr>
 nnoremap <leader>gl :Gitv<cr>
+" git fuzzy history
+nnoremap <leader>gf :GHistory<cr>
 " TODO: history fuzzy search w/ FZF
 " TODO: fix broken gitv-fugitive incompatibility
 let g:signify_vcs_list = [ 'git' ]
@@ -107,4 +109,34 @@ omap ig <Plug>(signify-motion-inner-pending)
 xmap ig <Plug>(signify-motion-inner-visual)
 omap ag <Plug>(signify-motion-outer-pending)
 xmap ag <Plug>(signify-motion-outer-visual)
+
+function! s:commits_sink(lines)
+  if len(a:lines) < 2
+    return
+  endif
+
+  let shapattern = '[0-9a-f]\{7,9}'
+  let action_map = {
+  \ 'ctrl-d': 'diff',
+  \ 'ctrl-e': 'checkout'
+  \}
+
+  let action = get(action_map, a:lines[0], 'diff')
+  let commit = a:lines[1]
+  let sha = matchstr(commit, shapattern)
+  if !empty(sha)
+    if action == 'diff'
+      execute 'Gvdiff' sha
+    elseif action == 'checkout'
+      execute 'Git' 'checkout' sha
+    endif
+  endif
+endfunction
+
+command! GHistory call fzf#run(fzf#wrap({
+\ 'source': 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'),
+\ 'sink*': function('<sid>commits_sink'),
+\ 'options': ['--ansi', '--layout=reverse-list', '--inline-info', '--prompt',
+\   'GHistory> ', '--expect=ctrl-d,ctrl-e']
+\ }))
 
