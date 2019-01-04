@@ -90,9 +90,9 @@ nnoremap <leader>gdo :Gvdiff @{upstream}<cr>
 nnoremap <leader>gdm :Gvdiff master<cr>
 " short mappings for taking / removing diff changes
 nnoremap <leader>gr :Gread<cr>
-vnoremap <leader>gr :Gread<cr>
+vnoremap <leader>gr :diffget<cr>
 nnoremap <leader>gw :Gwrite<cr>
-vnoremap <leader>gw :Gwrite<cr>
+vnoremap <leader>gw :diffput<cr>
 " git history view
 nnoremap <leader>gh :Gitv!<cr>
 vnoremap <leader>gh :Gitv!<cr>
