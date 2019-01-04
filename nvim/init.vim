@@ -110,6 +110,10 @@ xmap ig <Plug>(signify-motion-inner-visual)
 omap ag <Plug>(signify-motion-outer-pending)
 xmap ag <Plug>(signify-motion-outer-visual)
 
+function! s:function(name)
+  return function(a:name)
+endfunction
+
 function! s:commits_sink(lines)
   if len(a:lines) < 2
     return
@@ -134,10 +138,21 @@ function! s:commits_sink(lines)
   endif
 endfunction
 
-command! GHistory call fzf#run(fzf#wrap({
-\ 'source': 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'),
-\ 'sink*': function('<sid>commits_sink'),
-\ 'options': ['--ansi', '--layout=reverse-list', '--inline-info', '--prompt',
-\   'GHistory> ', '--expect=enter,ctrl-e']
-\ }))
+function! s:git_history()
+  " TODO: make sure this only gets called from a git buffer
+
+  let source = 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr')
+  let currentFile = expand('%:p')
+  let source .= ' --follow -- '.'/home/obe/dotfiles/nvim/init.vim'
+  let command = 'GHistory'
+  let options = {
+  \ 'source': source,
+  \ 'sink*': s:function('s:commits_sink'),
+  \ 'options': ['--ansi', '--layout=reverse-list', '--inline-info', '--prompt', command.'> ',
+  \   '--expect=enter,ctrl-e']
+  \ }
+  return options
+endfunction
+
+command! GHistory call fzf#run(fzf#wrap(s:git_history()))
 
