@@ -117,7 +117,7 @@ function! s:commits_sink(lines)
 
   let shapattern = '[0-9a-f]\{7,9}'
   let action_map = {
-  \ 'ctrl-d': 'diff',
+  \ 'enter': 'diff',
   \ 'ctrl-e': 'checkout'
   \}
 
@@ -128,7 +128,8 @@ function! s:commits_sink(lines)
     if action == 'diff'
       execute 'Gvdiff' sha
     elseif action == 'checkout'
-      execute 'silent!' 'Git' 'checkout' sha
+      let revfile = sha . ':%'
+      execute 'Gread' revfile
     endif
   endif
 endfunction
@@ -137,6 +138,6 @@ command! GHistory call fzf#run(fzf#wrap({
 \ 'source': 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'),
 \ 'sink*': function('<sid>commits_sink'),
 \ 'options': ['--ansi', '--layout=reverse-list', '--inline-info', '--prompt',
-\   'GHistory> ', '--expect=ctrl-d,ctrl-e']
+\   'GHistory> ', '--expect=enter,ctrl-e']
 \ }))
 
