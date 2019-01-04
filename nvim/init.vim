@@ -110,6 +110,16 @@ xmap ig <Plug>(signify-motion-inner-visual)
 omap ag <Plug>(signify-motion-outer-pending)
 xmap ag <Plug>(signify-motion-outer-visual)
 
+function! s:co_master()
+  let filepath = expand('%:p')
+  execute 'Git' 'checkout' 'master' '--' filepath
+endfunction
+
+function! s:co_hash(hash)
+  let filepath = expand('%:p')
+  execute 'Git' 'checkout' a:hash '--' filepath
+endfunction
+
 function! s:commits_sink(lines)
   if len(a:lines) < 2
     return
@@ -121,6 +131,7 @@ function! s:commits_sink(lines)
   \ 'ctrl-e': 'checkout'
   \}
 
+  let filepath = expand('%:p')
   let action = get(action_map, a:lines[0], 'diff')
   let commit = a:lines[1]
   let sha = matchstr(commit, shapattern)
@@ -128,7 +139,7 @@ function! s:commits_sink(lines)
     if action == 'diff'
       execute 'Gvdiff' sha
     elseif action == 'checkout'
-      execute 'Git' 'checkout' sha
+      execute 'Git' 'checkout' sha '--' filepath
     endif
   endif
 endfunction
