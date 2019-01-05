@@ -29,7 +29,7 @@ Plug 'junegunn/goyo.vim'
 " basic editing
 Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'jeetsukumaran/vim-indentwise'
+Plug 'jeetsukumaran/vim-indentwise' " consider replacing...
 Plug 'AndrewRadev/splitjoin.vim'
 
 " linting
@@ -275,6 +275,8 @@ nnoremap <leader>vw :Goyo<cr>
 """ QUICKFIX UTILITIES
 nnoremap <leader>qn :cnext<cr>
 nnoremap <leader>qp :cprev<cr>
+nnoremap <leader>qc :cclose<cr>
 nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprev<cr>
+nnoremap <leader>lc :lclose<cr>
 
