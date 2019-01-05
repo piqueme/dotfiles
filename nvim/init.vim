@@ -181,9 +181,7 @@ function! s:branches_sink(lines)
   let branch_name = branch_info_split[0]
   if !empty(branch_name)
     if action == 'checkout'
-      "TODO: throw clearer exception when checkout fails
       execute 'Git checkout' branch_name
-      execute 'tabclose'
       execute 'checktime'
     elseif action == 'diff'
       execute 'Gvdiff' branch_name
@@ -192,6 +190,8 @@ function! s:branches_sink(lines)
       execute 'Gread' revfile
     elseif action == 'merge'
       execute 'Gmerge' branch_name
+    elseif action == 'delete'
+      execute 'Git branch -D' branch_name
     endif
   endif
 endfunction
@@ -204,7 +204,8 @@ function! s:git_branches()
   let options = {
   \ 'source': source,
   \ 'sink*': s:function('s:branches_sink'),
-  \ 'options': ['--inline-info', '--prompt', command.'> ', '--expect=enter,ctrl-d,ctrl-e,ctrl-m']
+  \ 'options': ['--inline-info', '--prompt', command.'> ',
+  \   '--expect=enter,ctrl-d,ctrl-e,ctrl-m,ctrl-x']
   \ }
   return options
 endfunction
