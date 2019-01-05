@@ -82,6 +82,13 @@ nnoremap <leader>fo :only<cr>
 nnoremap <leader>bf :FzfBuffers<cr>
 nnoremap <leader>ba :b#<cr>
 
+""" TAB UTILITIES
+nnoremap <leader>te :tabedit
+nnoremap <leader>tq :tabclose<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tn :tabn<cr>
+nnoremap <leader>tp :tabp<cr>
+
 """ ANNOTATION
 " depends on vim-commentary
 nmap <leader>ac <Plug>Commentary
