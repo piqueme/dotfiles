@@ -36,13 +36,23 @@ color dracula
 " airline config
 let g:airline_theme = 'dracula'
 
+" spacing
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" editor area
 set number
 set textwidth=100
 
+" search
+set ignorecase
+set smartcase
+
+" folding
+set nofoldenable
+
+""" MODE SWITCHING
 inoremap jk <esc>
 vnoremap jk <esc>
 inoremap <esc> <nop>
