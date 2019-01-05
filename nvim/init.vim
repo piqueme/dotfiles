@@ -82,6 +82,10 @@ inoremap jk <esc>
 vnoremap jk <esc>
 inoremap <esc> <nop>
 
+""" MACROS
+" qq to record, Q to replay
+nnoremap Q @q
+
 """ CONFIG EDITING
 nnoremap <leader>se :edit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ss :source ~/.config/nvim/init.vim<cr>
@@ -106,6 +110,8 @@ nnoremap <leader>fo :only<cr>
 """ BUFFER UTILIIES
 nnoremap <leader>bf :FzfBuffers<cr>
 nnoremap <leader>ba :b#<cr>
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bp :bprev<cr>
 
 """ TAB UTILITIES
 nnoremap <leader>te :tabedit
@@ -113,6 +119,11 @@ nnoremap <leader>tq :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tn :tabn<cr>
 nnoremap <leader>tp :tabp<cr>
+
+""" WINDOW UTILITIES
+" circular nav
+nnoremap <tab> <c-w>w
+nnoremap <S-tab> <c-w>W
 
 """ ANNOTATION
 " depends on vim-commentary
@@ -260,4 +271,10 @@ let g:deoplete#enable_at_startup = 1
 
 """ GOYO
 nnoremap <leader>vw :Goyo<cr>
+
+""" QUICKFIX UTILITIES
+nnoremap <leader>qn :cnext<cr>
+nnoremap <leader>qp :cprev<cr>
+nnoremap <leader>ln :lnext<cr>
+nnoremap <leader>lp :lprev<cr>
 
