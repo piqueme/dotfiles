@@ -287,3 +287,13 @@ nnoremap <leader>lc :lclose<cr>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+""" ALE (LINT)
+nmap <leader>an <Plug>(ale_next_wrap)
+nmap <leader>ap <Plug>(ale_previous_wrap)
+
+""" SPLITJOIN
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nnoremap <leader>es :SplitjoinSplit<cr>
+nnoremap <leader>ej :SplitjoinJoin<cr>
+
