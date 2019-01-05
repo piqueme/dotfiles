@@ -69,6 +69,8 @@ nnoremap <leader>gc :FzfCommits<cr>
 nnoremap <leader>fw :wq<cr>
 nnoremap <leader>fq :q<cr>
 nnoremap <leader>fs :w<cr>
+nnoremap <leader>fu :changetime<cr>
+nnoremap <leader>fo :only<cr>
 
 """ ANNOTATION
 " depends on vim-commentary
