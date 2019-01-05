@@ -26,10 +26,11 @@ Plug 'mhinz/vim-signify'
 " Goyo
 Plug 'junegunn/goyo.vim'
 
-" basic motion
+" basic editing
 Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'jeetsukumaran/vim-indentwise'
+Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
