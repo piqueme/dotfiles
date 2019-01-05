@@ -80,6 +80,7 @@ vmap <leader>ac <Plug>Commentary
 """ GIT
 " TODO: helpers for viewing diff between two refs
 " TODO: inline maps from fugitive and gitv here for clarity
+" TODO: learn how to rebase using gitv
 set diffopt+=vertical
 let g:Gitv_DoNotMapCtrlKey = 1
 " depends on vim-fugitive
