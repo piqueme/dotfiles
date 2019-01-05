@@ -172,7 +172,8 @@ function! s:branches_sink(lines)
   \ 'enter': 'checkout',
   \ 'ctrl-e': 'read',
   \ 'ctrl-d': 'diff',
-  \ 'ctrl-m': 'merge'
+  \ 'ctrl-m': 'merge',
+  \ 'ctrl-x': 'delete'
   \ }
 
   let action = get(action_map, a:lines[0], 'checkout')
