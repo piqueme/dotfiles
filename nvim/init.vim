@@ -35,6 +35,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 " linting
 Plug 'w0rp/ale'
 
+" alignment
+Plug 'junegunn/vim-easy-align'
+
 call plug#end()
 
 let mapleader = ';'
@@ -279,4 +282,8 @@ nnoremap <leader>qc :cclose<cr>
 nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprev<cr>
 nnoremap <leader>lc :lclose<cr>
+
+""" VIM-EASY-ALIGN
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
