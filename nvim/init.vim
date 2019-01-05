@@ -23,6 +23,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'mhinz/vim-signify'
 
+" Goyo
+Plug 'junegunn/goyo.vim'
+
 " basic motion
 Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
@@ -237,4 +240,7 @@ command! GBranches call fzf#run(fzf#wrap(s:git_branches()))
 
 """ DEOPLETE
 let g:deoplete#enable_at_startup = 1
+
+""" GOYO
+nnoremap <leader>vw :Goyo<cr>
 
