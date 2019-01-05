@@ -76,6 +76,10 @@ nmap <leader>ac <Plug>Commentary
 vmap <leader>ac <Plug>Commentary
 
 """ GIT
+" TODO: helpers for viewing diff between two refs
+" TODO: inline maps from fugitive and gitv here for clarity
+set diffopt+=vertical
+let g:Gitv_DoNotMapCtrlKey = 1
 " depends on vim-fugitive
 nnoremap <leader>gs :Gstatus<cr>
 " fetch
@@ -99,8 +103,8 @@ vnoremap <leader>gh :Gitv!<cr>
 nnoremap <leader>gl :Gitv<cr>
 " git fuzzy history
 nnoremap <leader>gf :GHistory<cr>
-" TODO: history fuzzy search w/ FZF
-" TODO: fix broken gitv-fugitive incompatibility
+" git fuzzy branches
+nnoremap <leader>ga :GBranches<cr>
 let g:signify_vcs_list = [ 'git' ]
 nmap <leader>gn <Plug>(signify-prev-hunk)
 nmap <leader>gm <Plug>(signify-next-hunk)
@@ -142,7 +146,6 @@ function! s:git_history()
   " TODO: make sure this only gets called from a git buffer
 
   let source = 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr')
-  let currentFile = expand('%:p')
   let source .= ' --follow -- '.'/home/obe/dotfiles/nvim/init.vim'
   let command = 'GHistory'
   let options = {
@@ -154,5 +157,55 @@ function! s:git_history()
   return options
 endfunction
 
+" FZF allowing for replacing file with old commit, or diffing
 command! GHistory call fzf#run(fzf#wrap(s:git_history()))
+
+function! s:branches_sink(lines)
+  if len(a:lines) < 2
+    return
+  endif
+
+  let action_map = {
+  \ 'enter': 'checkout',
+  \ 'ctrl-e': 'read',
+  \ 'ctrl-d': 'diff',
+  \ 'ctrl-m': 'merge'
+  \ }
+
+  let action = get(action_map, a:lines[0], 'checkout')
+  let branch = a:lines[1]
+  let branch_info_split = split(branch)
+  let branch_name = branch_info_split[0]
+  if !empty(branch_name)
+    if action == 'checkout'
+      "TODO: throw clearer exception when checkout fails
+      execute 'Git checkout' branch_name
+      execute 'tabclose'
+      execute 'checktime'
+    elseif action == 'diff'
+      execute 'Gvdiff' branch_name
+    elseif action == 'read'
+      let revfile = branch_name . ':%'
+      execute 'Gread' revfile
+    elseif action == 'merge'
+      execute 'Gmerge' branch_name
+    endif
+  endif
+endfunction
+
+function! s:git_branches()
+  " TODO: make sure this only gets called from a git-controlled file buffer
+
+  let source = 'git branch -vv'
+  let command = 'GBranches'
+  let options = {
+  \ 'source': source,
+  \ 'sink*': s:function('s:branches_sink'),
+  \ 'options': ['--inline-info', '--prompt', command.'> ', '--expect=enter,ctrl-d,ctrl-e,ctrl-m']
+  \ }
+  return options
+endfunction
+
+" FZF command for diffing file w/ branch or checking out branch
+command! GBranches call fzf#run(fzf#wrap(s:git_branches()))
 
