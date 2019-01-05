@@ -11,6 +11,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+
 " commentary (generic commenting)
 Plug 'tpope/vim-commentary'
 
@@ -230,4 +234,7 @@ endfunction
 
 " FZF command for diffing file w/ branch or checking out branch
 command! GBranches call fzf#run(fzf#wrap(s:git_branches()))
+
+""" DEOPLETE
+let g:deoplete#enable_at_startup = 1
 
