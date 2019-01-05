@@ -180,10 +180,10 @@ function! s:branches_sink(lines)
 
   let action_map = {
   \ 'enter': 'checkout',
-  \ 'ctrl-e': 'read',
-  \ 'ctrl-d': 'diff',
-  \ 'ctrl-m': 'merge',
-  \ 'ctrl-x': 'delete'
+  \ 'ctrl-h': 'read',
+  \ 'ctrl-j': 'diff',
+  \ 'ctrl-k': 'merge',
+  \ 'ctrl-l': 'delete'
   \ }
 
   let action = get(action_map, a:lines[0], 'checkout')
@@ -216,7 +216,7 @@ function! s:git_branches()
   \ 'source': source,
   \ 'sink*': s:function('s:branches_sink'),
   \ 'options': ['--inline-info', '--prompt', command.'> ',
-  \   '--expect=enter,ctrl-d,ctrl-e,ctrl-m,ctrl-x']
+  \   '--expect=enter,ctrl-h,ctrl-j,ctrl-k,ctrl-l']
   \ }
   return options
 endfunction
