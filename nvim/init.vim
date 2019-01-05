@@ -117,11 +117,11 @@ nnoremap <leader>gl :Gitv<cr>
 " git fuzzy history
 nnoremap <leader>gf :GHistory<cr>
 " git fuzzy branches
-nnoremap <leader>ga :GBranches<cr>
+nnoremap <leader>gb :GBranches<cr>
 let g:signify_vcs_list = [ 'git' ]
 nmap <leader>gn <Plug>(signify-prev-hunk)
 nmap <leader>gm <Plug>(signify-next-hunk)
-nmap <leader>gb 9999<leader>gn
+nmap <leader>gt 9999<leader>gn
 omap ig <Plug>(signify-motion-inner-pending)
 xmap ig <Plug>(signify-motion-inner-visual)
 omap ag <Plug>(signify-motion-outer-pending)
