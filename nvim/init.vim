@@ -70,17 +70,17 @@ nnoremap <leader>rp Go
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~40%' }
 
-nnoremap <leader>ff :FzfGFiles<cr>
-nnoremap <leader>it :FzfTags<cr>
-nnoremap <leader>bf :FzfBuffers<cr>
-nnoremap <leader>gc :FzfCommits<cr>
-
 """ FILE UTILITIES
+nnoremap <leader>ff :FzfGFiles<cr>
 nnoremap <leader>fw :wq<cr>
 nnoremap <leader>fq :q<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fu :checktime<cr>
 nnoremap <leader>fo :only<cr>
+
+""" BUFFER UTILIIES
+nnoremap <leader>bf :FzfBuffers<cr>
+nnoremap <leader>ba :b#<cr>
 
 """ ANNOTATION
 " depends on vim-commentary
