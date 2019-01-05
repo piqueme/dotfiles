@@ -32,6 +32,9 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'AndrewRadev/splitjoin.vim'
 
+" linting
+Plug 'w0rp/ale'
+
 call plug#end()
 
 let mapleader = ';'
@@ -48,14 +51,28 @@ let g:airline_theme = 'dracula'
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set smarttab
+set autoindent
+set smartindent
 
 " editor area
 set number
 set textwidth=100
+set lazyredraw
+set visualbell
+set scrolloff=10
+set encoding=utf-8
+
+" file state management
+set autoread
 
 " search
 set ignorecase
 set smartcase
+
+" command completion
+set wildmenu
+set wildmode=full
 
 " folding
 set nofoldenable
@@ -208,7 +225,6 @@ function! s:branches_sink(lines)
   if !empty(branch_name)
     if action == 'checkout'
       execute 'Git checkout' branch_name
-      execute 'checktime'
     elseif action == 'diff'
       execute 'Gvdiff' branch_name
     elseif action == 'read'
