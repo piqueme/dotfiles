@@ -38,6 +38,9 @@ Plug 'w0rp/ale'
 " alignment
 Plug 'junegunn/vim-easy-align'
 
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 let mapleader = ';'
@@ -302,4 +305,11 @@ xnoremap gpp {
 nnoremap gpp {
 xnoremap gpn }
 nnoremap gpn }
+
+""" TMUX NAVIGATION
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
