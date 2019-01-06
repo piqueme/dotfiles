@@ -97,6 +97,7 @@ nnoremap Q @q
 nnoremap <leader>se :edit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ss :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sp :PlugInstall<cr>
+nnoremap <leader>sm :map<cr>
 
 """ REFORMATTING
 nnoremap <leader>rs :%s/\s\+$//e<cr>
@@ -329,6 +330,12 @@ xnoremap gpp {
 nnoremap gpp {
 xnoremap gpn }
 nnoremap gpn }
+
+" relies on indentwise
+nmap gip [-
+nmap gin ]+
+nmap gmp [=
+nmap gmn ]=
 
 """ TMUX NAVIGATION
 let g:tmux_navigator_no_mappings = 1
