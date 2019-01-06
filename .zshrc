@@ -23,11 +23,11 @@ alias gcn='git commit --amend'
 alias gcan='git commit -a --amend'
 alias gnb='git checkout -b'
 alias gch='git checkout'
-alias gl='git log'
+alias gl='git log --color=always '\''--format=%C(auto)%h%d %s %C(green)%cr'\'''
 alias gpl='git pull'
 alias gpr='git pull --rebase origin master'
 alias gps='git push'
-alias gs='git status'
+alias gs='git status --short'
 gd() {
   cd $(git rev-parse --show-toplevel)
 }

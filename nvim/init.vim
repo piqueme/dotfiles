@@ -3,6 +3,13 @@
 " TODO: separate config into modules
 " TODO: search all instances of current word in file
 " TODO: search all instances of current word in git project
+" TODO: intelligence ops
+"   TODO: grep project
+"   TODO: grep file
+"   TODO: search tags file
+"   TODO: search tags project
+"   TODO: go to definition
+"   TODO: go to implementation
 
 call plug#begin('~/.config/nvim/plugged')
 
