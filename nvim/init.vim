@@ -280,9 +280,11 @@ let g:deoplete#enable_at_startup = 1
 nnoremap <leader>vw :Goyo<cr>
 
 """ QUICKFIX UTILITIES
+nnoremap <leader>qo :copen<cr>
 nnoremap <leader>qn :cnext<cr>
 nnoremap <leader>qp :cprev<cr>
 nnoremap <leader>qc :cclose<cr>
+nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprev<cr>
 nnoremap <leader>lc :lclose<cr>
