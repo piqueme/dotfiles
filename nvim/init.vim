@@ -332,10 +332,10 @@ nnoremap <leader>es :SplitjoinSplit<cr>
 nnoremap <leader>ej :SplitjoinJoin<cr>
 
 """ MOTIONS
-xnoremap gpp {
-nnoremap gpp {
-xnoremap gpn }
-nnoremap gpn }
+xnoremap gpp {k
+nnoremap gpp {k
+xnoremap gpn }j
+nnoremap gpn }j
 
 " relies on indentwise
 nmap gip [-
