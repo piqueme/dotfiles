@@ -47,8 +47,9 @@ let mapleader = ';'
 
 " color scheme settings
 syntax on
-set termguicolors
+let g:dracula_italic=0
 color dracula
+highlight Normal ctermbg=None
 
 " airline config
 let g:airline_theme = 'dracula'
