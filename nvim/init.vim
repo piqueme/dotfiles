@@ -1,6 +1,8 @@
 " TODO: tidy sectioning
 " TODO: helper to collect todo into loclist
 " TODO: separate config into modules
+" TODO: search all instances of current word in file
+" TODO: search all instances of current word in git project
 
 call plug#begin('~/.config/nvim/plugged')
 
