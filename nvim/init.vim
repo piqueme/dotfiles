@@ -297,3 +297,9 @@ let g:splitjoin_join_mapping = ''
 nnoremap <leader>es :SplitjoinSplit<cr>
 nnoremap <leader>ej :SplitjoinJoin<cr>
 
+""" MOTIONS
+xnoremap gpp {
+nnoremap gpp {
+xnoremap gpn }
+nnoremap gpn }
+
