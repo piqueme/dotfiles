@@ -1,3 +1,7 @@
+" TODO: tidy sectioning
+" TODO: helper to collect todo into loclist
+" TODO: separate config into modules
+
 call plug#begin('~/.config/nvim/plugged')
 
 " color scheme
@@ -40,6 +44,8 @@ Plug 'junegunn/vim-easy-align'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
+
+" TODO: VIM-TEST
 
 call plug#end()
 
