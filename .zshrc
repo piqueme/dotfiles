@@ -32,6 +32,9 @@ gd() {
   cd $(git rev-parse --show-toplevel)
 }
 
+# tmux
+alias tmux='tmux -2'
+
 ### Autocompletion
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%sm' -t '%j' ~/.zcompdump 2>/dev/null)
