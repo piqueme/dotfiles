@@ -160,7 +160,7 @@ vmap <leader>ac <Plug>Commentary
 set diffopt+=vertical
 let g:Gitv_DoNotMapCtrlKey = 1
 " depends on vim-fugitive
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Gstatus<cr>gg<c-n>
 " fetch
 nnoremap <leader>gf :Gfetch<cr>
 " vertical diff current - staged
@@ -358,4 +358,8 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let s:grep_module = s:scriptdir . '/grep.vim'
+exec "source " . s:grep_module 
 
