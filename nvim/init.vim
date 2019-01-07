@@ -109,10 +109,10 @@ inoremap <esc> <nop>
 nnoremap Q @q
 
 """ CONFIG EDITING
-nnoremap <leader>se :edit ~/.config/nvim/init.vim<cr>
-nnoremap <leader>ss :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sp :PlugInstall<cr>
-nnoremap <leader>sm :map<cr>
+nnoremap <leader>pe :edit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ps :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>pp :PlugInstall<cr>
+nnoremap <leader>pm :map<cr>
 
 """ REFORMATTING
 nnoremap <leader>rs :%s/\s\+$//e<cr>
@@ -126,8 +126,8 @@ let g:fzf_layout = { 'down': '~40%' }
 nnoremap <leader>wo :only<cr>
 nnoremap <leader>wn <c-w>w
 nnoremap <leader>wp <c-w>W
-nnoremap <leader>wv :vsplit 
-nnoremap <leader>ws :split 
+nnoremap <leader>wv :vsplit
+nnoremap <leader>ws :split
 " these ones are a little special to mesh with tmux
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -137,14 +137,14 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 """ BUFFER UTILIIES
 nnoremap <leader>bf :FzfGFiles<cr>
-nnoremap <leader>bs :FzfBuffers<cr>
+nnoremap <leader>bb :FzfBuffers<cr>
 nnoremap <leader>ba :b#<cr>
 nnoremap <leader>bn :bnext<cr>
 nnoremap <leader>bp :bprev<cr>
-nnoremap <leader>fw :wq<cr>
-nnoremap <leader>fq :q<cr>
-nnoremap <leader>fs :w<cr>
-nnoremap <leader>fu :checktime<cr>
+nnoremap <leader>bw :wq<cr>
+nnoremap <leader>bq :q<cr>
+nnoremap <leader>bs :w<cr>
+nnoremap <leader>bu :checktime<cr>
 
 """ TAB UTILITIES
 nnoremap <leader>te :tabedit
