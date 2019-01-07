@@ -122,19 +122,29 @@ nnoremap <leader>rp Go
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~40%' }
 
-""" FILE UTILITIES
-nnoremap <leader>ff :FzfGFiles<cr>
+""" WINDOW UTILITIES
+nnoremap <leader>wo :only<cr>
+nnoremap <leader>wn <c-w>w
+nnoremap <leader>wp <c-w>W
+nnoremap <leader>wv :vsplit 
+nnoremap <leader>ws :split 
+" these ones are a little special to mesh with tmux
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+""" BUFFER UTILIIES
+nnoremap <leader>bf :FzfGFiles<cr>
+nnoremap <leader>bs :FzfBuffers<cr>
+nnoremap <leader>ba :b#<cr>
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bp :bprev<cr>
 nnoremap <leader>fw :wq<cr>
 nnoremap <leader>fq :q<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fu :checktime<cr>
-nnoremap <leader>fo :only<cr>
-
-""" BUFFER UTILIIES
-nnoremap <leader>bf :FzfBuffers<cr>
-nnoremap <leader>ba :b#<cr>
-nnoremap <leader>bn :bnext<cr>
-nnoremap <leader>bp :bprev<cr>
 
 """ TAB UTILITIES
 nnoremap <leader>te :tabedit
@@ -142,11 +152,6 @@ nnoremap <leader>tq :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tn :tabn<cr>
 nnoremap <leader>tp :tabp<cr>
-
-""" WINDOW UTILITIES
-" circular nav
-nnoremap <tab> <c-w>w
-nnoremap <S-tab> <c-w>W
 
 """ ANNOTATION
 " depends on vim-commentary
@@ -351,13 +356,6 @@ nmap gip [-
 nmap gin ]+
 nmap gmp [=
 nmap gmn ]=
-
-""" TMUX NAVIGATION
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:grep_module = s:scriptdir . '/grep.vim'
