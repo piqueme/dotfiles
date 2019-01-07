@@ -361,5 +361,5 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:grep_module = s:scriptdir . '/grep.vim'
-exec "source " . s:grep_module 
+exec "source " . s:grep_module
 
