@@ -165,7 +165,7 @@ vmap <leader>ac <Plug>Commentary
 set diffopt+=vertical
 let g:Gitv_DoNotMapCtrlKey = 1
 " depends on vim-fugitive
-nnoremap <leader>gs :Gstatus<cr>gg<c-n>
+nnoremap <leader>gs :Gstatus<cr>
 " fetch
 nnoremap <leader>gf :Gfetch<cr>
 " vertical diff current - staged
