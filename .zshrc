@@ -72,7 +72,9 @@ source "$dotdir/fzf/main.zsh"
 ### VI MODE
 bindkey -M viins 'jk' vi-cmd-mode
 
-### NVM
+### NODE
+export PATH="$PATH:$HOME/.yarn/bin"
+
 lazynvm() {
   unset -f nvm node yarn npm
   export NVM_DIR="$HOME/.nvm"
@@ -98,6 +100,9 @@ npm() {
   lazynvm
   npm $@
 }
+
+alias yup='ncu --upgrade --upgradeAll && yarn upgrade'
+
 ### END NVM
 
 ### Added by Zplugin's installer
