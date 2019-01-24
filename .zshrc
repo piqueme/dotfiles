@@ -72,6 +72,34 @@ source "$dotdir/fzf/main.zsh"
 ### VI MODE
 bindkey -M viins 'jk' vi-cmd-mode
 
+### NVM
+lazynvm() {
+  unset -f nvm node yarn npm
+  export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+}
+
+nvm() {
+  lazynvm
+  nvm $@
+}
+
+node() {
+  lazynvm
+  node $@
+}
+
+yarn() {
+  lazynvm
+  yarn $@
+}
+
+npm() {
+  lazynvm
+  npm $@
+}
+### END NVM
+
 ### Added by Zplugin's installer
 source '/home/obe/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
