@@ -2,10 +2,7 @@
 " TODO: helper to collect todo into loclist
 " TODO: separate config into modules
 " TODO: search all instances of current word in file
-" TODO: search all instances of current word in git project
 " TODO: intelligence ops
-"   TODO: grep project
-"   TODO: grep file
 "   TODO: search tags file
 "   TODO: search tags project
 "   TODO: go to definition
@@ -41,6 +38,8 @@ Plug 'junegunn/goyo.vim'
 
 " basic editing
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'jeetsukumaran/vim-indentwise' " consider replacing...
 Plug 'AndrewRadev/splitjoin.vim'
@@ -53,6 +52,12 @@ Plug 'junegunn/vim-easy-align'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
+
+" Clojure
+Plug 'tpope/vim-fireplace', { 'for': 'clojure', 'on': 'FireplaceConnect' }
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " TODO: VIM-TEST
 
@@ -155,8 +160,8 @@ nnoremap <leader>tp :tabp<cr>
 
 """ ANNOTATION
 " depends on vim-commentary
-nmap <leader>ac <Plug>Commentary
-vmap <leader>ac <Plug>Commentary
+nmap <leader>dc <Plug>Commentary
+vmap <leader>dc <Plug>Commentary
 
 """ GIT
 " TODO: helpers for viewing diff between two refs
@@ -340,6 +345,7 @@ nmap <leader>an <Plug>(ale_next_wrap)
 nmap <leader>ap <Plug>(ale_previous_wrap)
 
 """ SPLITJOIN
+" TODO: Activate for JavaScript only
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
 nnoremap <leader>es :SplitjoinSplit<cr>
@@ -352,10 +358,48 @@ xnoremap gpn }j
 nnoremap gpn }j
 
 " relies on indentwise
+" TODO: activate only for pythong
 nmap gip [-
 nmap gin ]+
 nmap gmp [=
 nmap gmn ]=
+
+""" CLOJURE
+" vim-sexp
+" <f >f (move form)
+nmap <leader>ffr >f
+nmap <leader>ffl <f
+" >e <e (move element)
+nmap <leader>fer >e
+nmap <leader>fel <e
+" >( <( (barf left, slurp left)
+nmap <leader>fbl >(
+nmap <leader>fbr <)
+" >) <) (slurp right, barf right)
+nmap <leader>fsl <(
+nmap <leader>fsr >)
+" <I >I (insert at beginning, insert at end)
+nmap <leader>fib <I
+nmap <leader>fie >I
+" dsf (delete form surroundings)
+" cse( / cse) (surround element with brackets)
+"
+" fireplace
+" K (view docstring)
+" :Doc [str] (look up docstr)
+nnoremap <leader>ds :Doc 
+" [<C-D> (go to definition)
+nnoremap <leader>id [<C-D>
+" gf (go to file - namespaces)
+"
+""" PYTHON
+au BufNewFile,BufRead *.py
+  \ set tabstop=4
+  \ set softtabstop=4
+  \ set textwidth=79
+  \ set expandtab
+  \ set autoindent
+  \ set fileformat=unix
 
 let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:grep_module = s:scriptdir . '/grep.vim'
