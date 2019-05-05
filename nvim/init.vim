@@ -59,6 +59,9 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
+" Python
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
 " TODO: VIM-TEST
 
 call plug#end()
@@ -387,19 +390,19 @@ nmap <leader>fie >I
 " fireplace
 " K (view docstring)
 " :Doc [str] (look up docstr)
-nnoremap <leader>ds :Doc 
+nnoremap <leader>ds :Doc
 " [<C-D> (go to definition)
 nnoremap <leader>id [<C-D>
 " gf (go to file - namespaces)
 "
 """ PYTHON
-au BufNewFile,BufRead *.py
-  \ set tabstop=4
-  \ set softtabstop=4
-  \ set textwidth=79
-  \ set expandtab
-  \ set autoindent
-  \ set fileformat=unix
+au FileType python
+  \ setlocal tabstop=4
+  \ | setlocal softtabstop=4
+  \ | setlocal textwidth=79
+  \ | setlocal expandtab
+  \ | setlocal autoindent
+  \ | setlocal fileformat=unix
 
 let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:grep_module = s:scriptdir . '/grep.vim'
