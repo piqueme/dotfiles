@@ -304,6 +304,7 @@ command! GBranches call fzf#run(fzf#wrap(s:git_branches()))
 
 """ DEOPLETE
 let g:deoplete#enable_at_startup = 1
+set completeopt-=preview
 
 """ GOYO
 function! s:goyo_enter()
