@@ -61,6 +61,7 @@ Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'python/black', { 'for': 'python' }
 
 " TODO: VIM-TEST
 
@@ -134,8 +135,8 @@ let g:fzf_layout = { 'down': '~40%' }
 nnoremap <leader>wo :only<cr>
 nnoremap <leader>wn <c-w>w
 nnoremap <leader>wp <c-w>W
-nnoremap <leader>wv :vsplit
-nnoremap <leader>ws :split
+nnoremap <leader>wv :vsplit<cr>
+nnoremap <leader>ws :split<cr>
 " these ones are a little special to mesh with tmux
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -189,11 +190,21 @@ nnoremap <leader>gr :Gread<cr>
 vnoremap <leader>gr :diffget<cr>
 nnoremap <leader>gw :Gwrite<cr>
 vnoremap <leader>gw :diffput<cr>
+
 " git history view
 nnoremap <leader>gh :Gitv!<cr>
 vnoremap <leader>gh :Gitv!<cr>
 nnoremap <leader>gl :Gitv<cr>
-" git fuzzy history
+" submaps
+" o - open in split
+" s - open in vsplit
+" q - quit
+" co - checkout (file mode file only)
+" D - diff mode (file mode only)
+" D - visual mode, can diff file across range
+" S - diff state, works in visual too
+" " git fuzzy history
+
 nnoremap <leader>gf :GHistory<cr>
 " git fuzzy branches
 nnoremap <leader>gb :GBranches<cr>
@@ -238,7 +249,8 @@ function! s:git_history()
   " TODO: make sure this only gets called from a git buffer
 
   let source = 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr')
-  let source .= ' --follow -- '.'/home/obe/dotfiles/nvim/init.vim'
+  let source .= ' --follow -- '.expand('%:p')
+  echo source
   let command = 'GHistory'
   let options = {
   \ 'source': source,
@@ -403,7 +415,6 @@ au FileType python
   \ | setlocal textwidth=79
   \ | setlocal expandtab
   \ | setlocal autoindent
-  \ | setlocal fileformat=unix
 
 let s:scriptdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:grep_module = s:scriptdir . '/grep.vim'
