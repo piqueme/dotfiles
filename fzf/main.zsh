@@ -1,7 +1,10 @@
 source '/usr/share/fzf/key-bindings.zsh'
 source '/usr/share/fzf/completion.zsh'
 
+export FZF_COMPLETION_TRIGGER=""
 export FZF_DEFAULT_OPTS="--height 40% --border"
+
+bindkey '^I' fzf-completion
 
 fzf-edit-file() {
   local filename
