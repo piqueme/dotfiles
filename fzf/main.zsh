@@ -7,14 +7,14 @@ export FZF_DEFAULT_OPTS="--height 40% --border"
 bindkey '^O' fzf-completion
 bindkey '^I' $fzf_default_completion
 
-fzf-edit-file() {
+fzf-edit-file-recursive() {
   local filename
   filename=$(fd -Lp -t f | fzf) &&
   nv "$filename"
   zle reset-prompt
 }
 zle -N fzf-edit-file
-bindkey 'fef' fzf-edit-file
+bindkey 'fr' fzf-edit-file
 
 fzf-edit-file-home() {
   local filename
@@ -23,7 +23,7 @@ fzf-edit-file-home() {
   zle reset-prompt
 }
 zle -N fzf-edit-file-home
-bindkey 'feh' fzf-edit-file-home
+bindkey 'fh' fzf-edit-file-home
 
 fzf-edit-file-git() {
   local gitroot filename
@@ -33,16 +33,16 @@ fzf-edit-file-git() {
   zle reset-prompt
 }
 zle -N fzf-edit-file-git
-bindkey 'feg' fzf-edit-file-git
+bindkey 'fg' fzf-edit-file-git
 
-fzf-change-dir() {
+fzf-change-dir-recursive() {
   local dirname
   dirname=$(fd -Lp -t d | fzf) &&
   cd "$dirname"
   zle reset-prompt
 }
 zle -N fzf-change-dir
-bindkey 'fsr' fzf-change-dir
+bindkey 'qr' fzf-change-dir
 
 fzf-change-dir-home() {
   local dirname
@@ -51,7 +51,7 @@ fzf-change-dir-home() {
   zle reset-prompt
 }
 zle -N fzf-change-dir-home
-bindkey 'fsh' fzf-change-dir-home
+bindkey 'qh' fzf-change-dir-home
 
 fzf-change-dir-git() {
   local gitroot dirname
@@ -61,9 +61,9 @@ fzf-change-dir-git() {
   zle reset-prompt
 }
 zle -N fzf-change-dir-git
-bindkey 'fsg' fzf-change-dir-git
+bindkey 'qg' fzf-change-dir-git
 
-fzf-paste-file() {
+fzf-paste-file-recursive() {
   local selected
   if selected=$(fd -Lp | fzf); then
     BUFFER="$LBUFFER$selected $RBUFFER"
@@ -72,18 +72,7 @@ fzf-paste-file() {
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file
-bindkey 'fpf' fzf-paste-file
-
-fzf-paste-file-all() {
-  local selected
-  if selected=$(fd -LHIp | fzf); then
-    BUFFER="$LBUFFER$selected $RBUFFER"
-  fi
-  zle redisplay
-  CURSOR=$(($CURSOR + $#selected + 2))
-}
-zle -N fzf-paste-file-all
-bindkey 'fpa' fzf-paste-file-all
+bindkey 'pf' fzf-paste-file
 
 fzf-paste-file-home() {
   local selected
@@ -94,7 +83,7 @@ fzf-paste-file-home() {
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file-home
-bindkey 'fph' fzf-paste-file-home
+bindkey 'ph' fzf-paste-file-home
 
 fzf-paste-file-git() {
   local selected
@@ -107,7 +96,7 @@ fzf-paste-file-git() {
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file-git
-bindkey 'fpg' fzf-paste-file-git
+bindkey 'pg' fzf-paste-file-git
 
 # fzf-paste-file-project() {}
 
@@ -122,7 +111,7 @@ fzf-paste-branch-git() {
   CURSOR=$(($CURSOR + $#branchname + 2))
 }
 zle -N fzf-paste-branch-git
-bindkey 'fb' fzf-paste-branch-git
+bindkey 'gb' fzf-paste-branch-git
 
 fzf-paste-commit-git() {
   local commits commit
@@ -134,5 +123,5 @@ fzf-paste-commit-git() {
   CURSOR=$(($CURSOR + $#commithash + 2))
 }
 zle -N fzf-paste-commit-git
-bindkey 'fgh' fzf-paste-commit-git
+bindkey 'gh' fzf-paste-commit-git
 
