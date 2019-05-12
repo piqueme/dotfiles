@@ -4,7 +4,8 @@ source '/usr/share/fzf/completion.zsh'
 export FZF_COMPLETION_TRIGGER=""
 export FZF_DEFAULT_OPTS="--height 40% --border"
 
-bindkey '^I' fzf-completion
+bindkey '^O' fzf-completion
+bindkey '^I' $fzf_default_completion
 
 fzf-edit-file() {
   local filename
