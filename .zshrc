@@ -1,3 +1,6 @@
+# TODO: TMUX close all tabs
+# TODO: TMUX setup panes initial
+
 # set editor to Neovim
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
@@ -35,16 +38,6 @@ gd() {
 
 # tmux
 alias tmux='tmux -2'
-
-### Autocompletion
-autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-  compinit -i
-else
-  compinit -C -i
-fi
-zmodload -i zsh/complist
 
 # history options
 HISTFILE=$HOME/.zsh_history
@@ -115,6 +108,11 @@ autoload -Uz _zplugin
 zplugin load zsh-users/zsh-syntax-highlighting
 zplugin load zsh-users/zsh-autosuggestions
 zplugin load zsh-users/zsh-completions
+
+autoload -Uz compinit
+compinit
+zplugin cdreplay
+zmodload -i zsh/complist
 
 ### SPACESHIP PROMPT CONFIG
 SPACESHIP_PROMPT_ORDER=(
