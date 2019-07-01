@@ -13,8 +13,8 @@ fzf-edit-file-recursive() {
   nv "$filename"
   zle reset-prompt
 }
-zle -N fzf-edit-file
-bindkey 'fr' fzf-edit-file
+zle -N fzf-edit-file-recursive
+bindkey 'vr' fzf-edit-file-recursive
 
 fzf-edit-file-home() {
   local filename
@@ -23,7 +23,7 @@ fzf-edit-file-home() {
   zle reset-prompt
 }
 zle -N fzf-edit-file-home
-bindkey 'fh' fzf-edit-file-home
+bindkey 'vh' fzf-edit-file-home
 
 fzf-edit-file-git() {
   local gitroot filename
@@ -33,7 +33,7 @@ fzf-edit-file-git() {
   zle reset-prompt
 }
 zle -N fzf-edit-file-git
-bindkey 'fg' fzf-edit-file-git
+bindkey 'vp' fzf-edit-file-git
 
 fzf-change-dir-recursive() {
   local dirname
@@ -41,8 +41,8 @@ fzf-change-dir-recursive() {
   cd "$dirname"
   zle reset-prompt
 }
-zle -N fzf-change-dir
-bindkey 'qr' fzf-change-dir
+zle -N fzf-change-dir-recursive
+bindkey 'qr' fzf-change-dir-recursive
 
 fzf-change-dir-home() {
   local dirname
@@ -61,7 +61,7 @@ fzf-change-dir-git() {
   zle reset-prompt
 }
 zle -N fzf-change-dir-git
-bindkey 'qg' fzf-change-dir-git
+bindkey 'qp' fzf-change-dir-git
 
 fzf-paste-file-recursive() {
   local selected
@@ -71,8 +71,8 @@ fzf-paste-file-recursive() {
   zle redisplay
   CURSOR=$(($CURSOR + $#selected + 2))
 }
-zle -N fzf-paste-file
-bindkey 'pf' fzf-paste-file
+zle -N fzf-paste-file-recursive
+bindkey 'yf' fzf-paste-file-recursive
 
 fzf-paste-file-home() {
   local selected
@@ -83,7 +83,7 @@ fzf-paste-file-home() {
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file-home
-bindkey 'ph' fzf-paste-file-home
+bindkey 'yh' fzf-paste-file-home
 
 fzf-paste-file-git() {
   local selected
@@ -96,7 +96,7 @@ fzf-paste-file-git() {
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file-git
-bindkey 'pg' fzf-paste-file-git
+bindkey 'yp' fzf-paste-file-git
 
 # fzf-paste-file-project() {}
 
