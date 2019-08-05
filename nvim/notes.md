@@ -226,3 +226,4 @@
 9. :CocInstall coc-python coc-json coc-tsserver
 9. Move fzf files
 10. Move zsh files
+11. zplugin install
