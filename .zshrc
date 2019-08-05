@@ -4,7 +4,7 @@
 # set editor to Neovim
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
-alias ls='ls --color=auto'
+alias ls='nnn'
 alias cl='clear'
 alias et='exit'
 alias nv='nvim'
@@ -39,6 +39,7 @@ gu() {
 
 # tmux
 alias tmux='tmux -2'
+alias tk='tmux kill-server'
 
 # history options
 HISTFILE=$HOME/.zsh_history
