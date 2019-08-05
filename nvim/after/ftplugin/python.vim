@@ -14,6 +14,12 @@ setlocal autoindent
 """ check if Black available?
 let g:black_linelength=79
 
-nmap <leader>id <Plug>(coc-definition)
-nmap <leader>ir <Plug>(coc-references)
-
+nmap <silent> <leader>id <Plug>(coc-definition)
+nmap <silent> <leader>ir <Plug>(coc-references)
+nmap <silent> <leader>is :CocList outline<CR>
+nmap <silent> <leader>iw :CocList symbols<CR>
+nmap <silent> <leader>fm <Plug>(coc-format)
+nmap <silent> <leader>fn <Plug>(coc-format-selected)
+vmap <silent> <leader>fn <Plug>(coc-format-selected)
+nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>ep <Plug>(coc-diagnostic-next)
