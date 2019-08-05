@@ -33,6 +33,8 @@ call plug#begin()
 " color scheme
 Plug 'dracula/vim', {'as': 'dracula'}
 
+Plug 'leafgarland/typescript-vim'
+
 " airline
 if g:status_line_enabled
   Plug 'vim-airline/vim-airline'
@@ -111,4 +113,5 @@ syntax on
 let g:dracula_italic=0
 color dracula
 highlight Normal ctermbg=None
-let g:airline_theme = 'dracula'
+let g:airline_theme='dracula'
+let g:airline_powerline_fonts=1
