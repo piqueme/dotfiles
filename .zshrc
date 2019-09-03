@@ -4,7 +4,6 @@
 # set editor to Neovim
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
-alias ls='nnn'
 alias cl='clear'
 alias et='exit'
 alias nv='nvim'
@@ -64,6 +63,11 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 dotfile="$(readlink -f "${(%):-%N}")"
 dotdir="$(dirname "$dotfile")"
 source "$dotdir/fzf/main.zsh"
+
+### nnn SETUP
+dotfile="$(readlink -f "${(%):-%N}")"
+dotdir="$(dirname "$dotfile")"
+source "$dotdir/nnn/main.zsh"
 
 ### VI MODE
 bindkey -M viins 'jk' vi-cmd-mode
