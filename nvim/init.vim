@@ -33,7 +33,12 @@ call plug#begin()
 " color scheme
 Plug 'dracula/vim', {'as': 'dracula'}
 
+" JS / TS
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'jparise/vim-graphql'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 " airline
 if g:status_line_enabled
