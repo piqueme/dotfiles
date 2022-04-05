@@ -1,16 +1,22 @@
 # TODO: TMUX close all tabs
 # TODO: TMUX setup panes initial
 
+# dircolors
+# . "${HOME}/.local/share/lscolors.sh"
+
 # set editor to Neovim
-export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/nvim"
+export EDITOR="/snap/bin/nvim"
+export VISUAL="/snap/bin/nvim"
 alias cl='clear'
 alias et='exit'
 alias nv='nvim'
 alias hd='cd $HOME'
 alias pd='cd "${HOME}"/Projects'
+alias ls='exa'
 alias md='mkdir'
 alias rd='rm -rf'
+alias hub='gh'
+alias open='xdg-open'
 
 export KEYTIMEOUT=10
 
@@ -35,6 +41,15 @@ alias gs='git status --short'
 gu() {
   cd $(git rev-parse --show-toplevel)
 }
+
+# Python
+alias python='python3'
+alias py='python3'
+export PYTHON='/usr/bin/python3'
+export PATH="$PATH:$PYTHON"
+
+# Docker (TODO)
+# Node / Yarn (TODO)
 
 # tmux
 alias tmux='tmux -2'
@@ -63,11 +78,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 dotfile="$(readlink -f "${(%):-%N}")"
 dotdir="$(dirname "$dotfile")"
 source "$dotdir/fzf/main.zsh"
-
-### nnn SETUP
-dotfile="$(readlink -f "${(%):-%N}")"
-dotdir="$(dirname "$dotfile")"
-source "$dotdir/nnn/main.zsh"
 
 ### VI MODE
 bindkey -M viins 'jk' vi-cmd-mode
@@ -101,53 +111,47 @@ npm() {
   npm $@
 }
 
+wpconv() {
+  folder=$1
+  [ ! -d "$folder" ] && echo "Directory for webp conversion does not exist."
+  for f in "$folder"/**/*.webp; do
+    ffmpeg -i $f ${f%.webp}-w.jpg
+    rm $f
+    [ ! -f  ${f%.webp}.jpg ] && mv ${f%.webp}-w.jpg ${f%.webp}.jpg
+  done
+}
+
 alias yup='ncu --upgrade --upgradeAll && yarn upgrade'
 
 ### END NVM
 
-### Added by Zplugin's installer
-source '/home/obe/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
+### Added by Zinit's installer
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin load zsh-users/zsh-syntax-highlighting
-zplugin load zsh-users/zsh-autosuggestions
-zplugin load zsh-users/zsh-completions
+### End of Zinit's installer chunk
 
-autoload -Uz compinit
-compinit
-zplugin cdreplay
-zmodload -i zsh/complist
+zinit lucid as=command pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+    atclone="cp shell/completion.zsh _fzf_completion; \
+      cp bin/fzf(|-tmux) $ZPFX/bin" \
+    src="shell/key-bindings.zsh" \
+    make="PREFIX=$ZPFX install" for \
+        junegunn/fzf
 
-### SPACESHIP PROMPT CONFIG
-SPACESHIP_PROMPT_ORDER=(
-  time          # time stamps
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  node          # Node version
-  pyenv         # Pyenv section
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
-zplugin load denysdovhan/spaceship-prompt
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
+ 
+zinit light asdf-vm/asdf
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/obe/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/obe/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/obe/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/obe/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/obe/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /home/obe/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+### End of Zinit's installer chunk
