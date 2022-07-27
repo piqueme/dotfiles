@@ -1,11 +1,11 @@
-source '/usr/share/fzf/key-bindings.zsh'
-source '/usr/share/fzf/completion.zsh'
+# source '/usr/share/doc/fzf/examples/key-bindings.zsh'
+# source '/usr/share/doc/fzf/examples/completion.zsh'
 
 export FZF_COMPLETION_TRIGGER=""
 export FZF_DEFAULT_OPTS="--height 40% --border"
 
-bindkey '^O' fzf-completion
-bindkey '^I' $fzf_default_completion
+# bindkey '^O' fzf-completion
+# bindkey '^I' $fzf_default_completion
 
 fzf-edit-file-recursive() {
   local filename
@@ -66,17 +66,19 @@ bindkey 'qp' fzf-change-dir-git
 fzf-paste-file-recursive() {
   local selected
   if selected=$(fd -Lp | fzf); then
+    selected=$(printf %q "$selected")
     BUFFER="$LBUFFER$selected $RBUFFER"
   fi
   zle redisplay
   CURSOR=$(($CURSOR + $#selected + 2))
 }
 zle -N fzf-paste-file-recursive
-bindkey 'yf' fzf-paste-file-recursive
+bindkey 'yr' fzf-paste-file-recursive
 
 fzf-paste-file-home() {
   local selected
   if selected=$(fd -Lp '' $HOME | fzf); then
+    selected=$(printf %q "$selected")
     BUFFER="$LBUFFER$selected $RBUFFER"
   fi
   zle redisplay
@@ -90,6 +92,7 @@ fzf-paste-file-git() {
   local gitroot
   gitroot=$(git rev-parse --show-toplevel)
   if selected=$(git ls-files $gitroot | fzf); then
+    selected=$(printf %q "$selected")
     BUFFER="$LBUFFER$selected $RBUFFER"
   fi
   zle redisplay

@@ -17,6 +17,7 @@ alias md='mkdir'
 alias rd='rm -rf'
 alias hub='gh'
 alias open='xdg-open'
+alias tennis-scheduler='cd ~/Projects/tennis-reservation-helper && node index.js'
 
 export KEYTIMEOUT=10
 
@@ -155,3 +156,4 @@ zinit light asdf-vm/asdf
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 ### End of Zinit's installer chunk
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
