@@ -172,3 +172,40 @@ br() {
 brs() {
   bazel query "rdeps(\"//...\", ${@}, 1)"
 }
+
+_fzf_complete_bazel() {
+  # the args FZF captures in $@ are not the full prompt
+  # we capture the full prompt space-separated here to handle cases
+  # like the last fragment being an option (starting with -)
+  args=()
+  for i in ${=LBUFFER}; do
+    args+="$i"
+  done
+
+  if [[ "${args[2]}" == "build" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
+    _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
+      bazel query '//...' 2>/dev/null
+    )
+  elif [[ "${args[2]}" == "test" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
+    _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
+      bazel query 'kind(".*_test", "//...")'
+    )
+  elif [[ "${args[2]}" == "run" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
+    _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
+      bazel query 'kind(".*_bin", "//...")'
+    )
+  elif [[ "${args[-1]}" == -* ]] && [[ ! "$@" =~ " -- " ]]; then
+    # NOTE: Ideally we could capture --[no] options as well, but alas...
+    help_command="${args[1]} help ${args[2]}"
+    filter_options_cmd="grep ' --.*'"
+    strip_no_options_cmd="sed s/\[\[\]no\[\]\]//g"
+    strip_start_spaces_cmd="sed -e 's/^[ \t]*//'"
+    strip_parentheses_cmd="sed -e 's/([^()]*)//g'"
+    bazel_options_cmd="$help_command | $filter_options_cmd | $strip_no_options_cmd | $strip_start_spaces_cmd | $strip_parentheses_cmd"
+    _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
+      eval ${bazel_options_cmd}
+    )
+    # make sure we have cursor right after completion to help set e.g. string options with =
+    CURSOR=$(($CURSOR - 2))
+  fi
+}

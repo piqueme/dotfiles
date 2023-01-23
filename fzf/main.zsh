@@ -1,10 +1,10 @@
-# source '/usr/share/doc/fzf/examples/key-bindings.zsh'
-# source '/usr/share/doc/fzf/examples/completion.zsh'
-
-export FZF_COMPLETION_TRIGGER=""
+export FZF_COMPLETION_TRIGGER=";"
 export FZF_DEFAULT_OPTS="--height 40% --border"
 
-# bindkey '^O' fzf-completion
+# TODO: Wait for this to merge (https://github.com/junegunn/fzf/pull/1299/files)
+# This way we can use FZF-based tab-completion only for special commands like bazel.
+#
+# bindkey '^P' fzf-completion
 # bindkey '^I' $fzf_default_completion
 
 fzf-edit-file-recursive() {
@@ -127,4 +127,3 @@ fzf-paste-commit-git() {
 }
 zle -N fzf-paste-commit-git
 bindkey 'gh' fzf-paste-commit-git
-

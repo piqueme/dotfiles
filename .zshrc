@@ -43,6 +43,9 @@ gu() {
   cd $(git rev-parse --show-toplevel)
 }
 
+# General
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
+
 # Python
 alias python='python3'
 alias py='python3'
@@ -51,6 +54,9 @@ export PATH="$PATH:$PYTHON"
 
 # Docker (TODO)
 # Node / Yarn (TODO)
+
+# Go
+export PATH="/usr/local/go/bin:$PATH"
 
 # tmux
 alias tmux='tmux -2'
@@ -66,7 +72,6 @@ setopt inc_append_history
 setopt share_history
 
 setopt auto_cd # navigate without cd
-setopt correct_all # autocorrect commands
 setopt auto_list # automatically list on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
@@ -78,7 +83,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 ### FZF SETUP
 dotfile="$(readlink -f "${(%):-%N}")"
 dotdir="$(dirname "$dotfile")"
+source "$dotdir/fzf/theme.zsh"
 source "$dotdir/fzf/main.zsh"
+source "$dotdir/fzf/bazel.zsh"
 
 ### VI MODE
 bindkey -M viins 'jk' vi-cmd-mode
@@ -133,13 +140,15 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-zinit lucid as=command pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+# INSTALL FZF AS ZSH PLUGIN
+zinit lucid as=command pick="bin/(fzf|fzf-tmux)" \
     atclone="cp shell/completion.zsh _fzf_completion; \
       cp bin/fzf(|-tmux) $ZPFX/bin" \
-    src="shell/key-bindings.zsh" \
+    multisrc="shell/key-bindings.zsh shell/completion.zsh" \
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
 
+# PROMPT
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
@@ -151,9 +160,7 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
  
+# LANGUAGE RUNTIME MANAGER
 zinit light asdf-vm/asdf
 
-export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
 ### End of Zinit's installer chunk
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
