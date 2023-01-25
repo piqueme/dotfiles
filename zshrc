@@ -1,147 +1,46 @@
-# TODO: TMUX close all tabs
-# TODO: TMUX setup panes initial
-
-# dircolors
-# . "${HOME}/.local/share/lscolors.sh"
-
-# set editor to Neovim
-export EDITOR="/snap/bin/nvim"
-export VISUAL="/snap/bin/nvim"
-if which batcat > /dev/null; then
-  alias bat='batcat'
-fi
-alias cl='clear'
-alias et='exit'
-alias nv='nvim'
-alias hd='cd $HOME'
-alias pd='cd "${HOME}"/Projects'
-alias ls='exa'
-alias md='mkdir'
-alias rd='rm -rf'
-alias hub='gh'
-alias open='xdg-open'
-alias tennis-scheduler='cd ~/Projects/tennis-reservation-helper && node index.js'
-
-export KEYTIMEOUT=10
-
-# Git aliases
-alias ga='git add'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gbd='git branch -D'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gca='git commit -a -m'
-alias gcn='git commit --amend'
-alias gcan='git commit -a --amend'
-alias gd='git diff'
-alias gnb='git checkout -b'
-alias gch='git checkout'
-alias gl='git log --color=always '\''--format=%C(auto)%h%d %C(magenta)%an %C(auto)%s %C(green)%cr'\'''
-alias gpl='git pull'
-alias gpr='git pull --rebase origin master'
-alias gps='git push'
-alias gs='git status --short'
-gu() {
-  cd $(git rev-parse --show-toplevel)
-}
-
 # General
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
+DOTFILE="$(readlink -f "${(%):-%N}")"
+DOTDIR="$(dirname "$DOTFILE")"
 
-# Python
-alias python='python3'
-alias py='python3'
-export PYTHON='/usr/bin/python3'
-export PATH="$PATH:$PYTHON"
+# set VI Mode
+bindkey -M viins 'jk' vi-cmd-mode
+export KEYTIMEOUT=10
+
+# basic utilities (e.g. exa)
+source "$DOTDIR/zsh/core.zsh"
+source "$DOTDIR/zsh/tmux.zsh"
+source "$DOTDIR/zsh/git.zsh"
+
+# Languages
+source "$DOTDIR/zsh/go.zsh"
+source "$DOTDIR/zsh/python.zsh"
+source "$DOTDIR/zsh/node.zsh"
+
+# ZSH-focus
+source "$DOTDIR/zsh/history.zsh"
+source "$DOTDIR/zsh/completion.zsh"
+
+# fzf
+source "$DOTDIR/fzf/theme.zsh"
+source "$DOTDIR/fzf/main.zsh"
+source "$DOTDIR/fzf/bazel.zsh"
 
 # Docker (TODO)
-# Node / Yarn (TODO)
-
-# Go
-export PATH="/usr/local/go/bin:$PATH"
-
-# tmux
-alias tmux='tmux -2'
-alias tk='tmux kill-server'
-
-# history options
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
-setopt inc_append_history
-setopt share_history
-
-setopt auto_cd # navigate without cd
-setopt auto_list # automatically list on ambiguous completion
-setopt auto_menu # automatically use menu completion
-setopt always_to_end # move cursor to end if word had one match
-
-zstyle ':completion:*' menu select # selection completions with arrow keys
-zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
-
-### FZF SETUP
-dotfile="$(readlink -f "${(%):-%N}")"
-dotdir="$(dirname "$dotfile")"
-source "$dotdir/fzf/theme.zsh"
-source "$dotdir/fzf/main.zsh"
-source "$dotdir/fzf/bazel.zsh"
-
-### VI MODE
-bindkey -M viins 'jk' vi-cmd-mode
-
-### NODE
-export PATH="$PATH:$HOME/.yarn/bin"
-
-lazynvm() {
-  unset -f nvm node yarn npm
-  export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-}
-
-nvm() {
-  lazynvm
-  nvm $@
-}
-
-node() {
-  lazynvm
-  node $@
-}
-
-yarn() {
-  lazynvm
-  yarn $@
-}
-
-npm() {
-  lazynvm
-  npm $@
-}
-
-wpconv() {
-  folder=$1
-  [ ! -d "$folder" ] && echo "Directory for webp conversion does not exist."
-  for f in "$folder"/**/*.webp; do
-    ffmpeg -i $f ${f%.webp}-w.jpg
-    rm $f
-    [ ! -f  ${f%.webp}.jpg ] && mv ${f%.webp}-w.jpg ${f%.webp}.jpg
-  done
-}
-
-alias yup='ncu --upgrade --upgradeAll && yarn upgrade'
-
-### END NVM
+# Kubernetes (TODO)
 
 ### Added by Zinit's installer
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+mkdir -p "$(dirname $ZINIT_HOME)"
+# install zinit if not yet available
+if [[ ! -d "$(dirname $ZINIT_HOME)" ]]; then
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add zinit completions
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-### End of Zinit's installer chunk
 
 # INSTALL FZF AS ZSH PLUGIN
 zinit lucid as=command pick="bin/(fzf|fzf-tmux)" \
@@ -165,5 +64,3 @@ zinit wait lucid light-mode for \
  
 # LANGUAGE RUNTIME MANAGER
 zinit light asdf-vm/asdf
-
-### End of Zinit's installer chunk
