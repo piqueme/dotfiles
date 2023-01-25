@@ -7,6 +7,9 @@
 # set editor to Neovim
 export EDITOR="/snap/bin/nvim"
 export VISUAL="/snap/bin/nvim"
+if which batcat > /dev/null; then
+  alias bat='batcat'
+fi
 alias cl='clear'
 alias et='exit'
 alias nv='nvim'
