@@ -21,7 +21,7 @@ g.zipPlugin = false
 -- core settings
 local set = vim.opt
 
-local colorscheme = "nightfox"
+local colorscheme = "catppuccin-mocha"
 vim.cmd(string.format("colorscheme %s", colorscheme))
 
 set.autoread = true -- when switching back to Neovim, file is re-read for updates
@@ -608,6 +608,7 @@ packer.startup {
     }
     -- Colorscheme
     use "EdenEast/nightfox.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- Utility
     use { "christoomey/vim-tmux-navigator" }
     -- File Tree
