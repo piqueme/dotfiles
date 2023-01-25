@@ -1,3 +1,21 @@
+# This module provides some kick-ass Bazel functionality.
+#
+# Aliases:
+#   bb = bazel build
+#   bt = bazel test
+#   br = bazel run
+#   bd = bazel query deps('<ARGS>')
+#   bds = bazel query deps('<ARGS>', 1)
+#
+# FZF-based Autocompletion:
+#   typing ;<Tab> after bazel build/test/run or aliases opens fzf for targets
+#   typing ;<Tab> on an option (e.g. "bazel build -;<Tab>") starts fzf for options
+#
+# FZF target / package helpers:
+#   hit <Ctrl-b> to open up a "target" fuzzy-finder anywhere in the workspace
+#   hit <Ctrl-o> to open up a "package" fuzzy-finder anywhere in the workspace
+#   after selection the target or package will be pasted, helpful for queries
+
 # UTIL
 warn() {
   local yellow='\033[1;33m'
