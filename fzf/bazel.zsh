@@ -162,6 +162,7 @@ alias bef=_bazel-external-filter
 alias bb="bazel build"
 alias bt="bazel test"
 alias bq="bazel query"
+alias br="bazel run"
 
 bqi() {
   local query
@@ -183,11 +184,11 @@ bds() {
   bazel query "deps(${@}, 1)"
 }
 
-br() {
+bu() {
   bazel query "rdeps(\"//...\", ${@})"
 }
 
-brs() {
+bus() {
   bazel query "rdeps(\"//...\", ${@}, 1)"
 }
 
