@@ -22,6 +22,21 @@ warn() {
   echo "${yellow}[WARN] $@"
 }
 
+_get_bazel_targets_scope() {
+  # Using Bazel query syntax get an identifier
+  # for all targets.
+  #
+  # Specifying env var BAZEL_TARGET_SCOPE for filtering
+  # can help with cases where the full scope of targets is 
+  # expensive or not permitted to query.
+  local default_bazel_target_scope="//..."
+  if [[ -z "$BAZEL_TARGET_SCOPE" ]]; then
+    echo "$default_bazel_target_scope"
+  else
+    echo "$BAZEL_TARGET_SCOPE"
+  fi
+}
+
 _check-in-bazel-workspace() {
   bazel info > /dev/null 2>&1
   if [[ "$?" -ne 0 ]]; then
@@ -57,16 +72,17 @@ _fzf-get-bazel-target() {
   done
 
   local query
+  local target_scope=$(_get_bazel_targets_scope)
 
   if [[ $no_test == "true" ]] && [[ $no_build == "false" ]]
   then
-    query="//... - tests(//...)"
+    query="${target_scope} - tests(${target_scope})"
   elif [[ $no_test == "false" ]] && [[ $no_build == "false" ]]
   then
-    query="//..."
+    query="${target_scope}"
   elif [[ $no_test == "false" ]] && [[ $no_build == "true" ]]
   then
-    query="tests(//...)"
+    query="tests(${target_scope})"
   else
     warn "Cannot ignore both tests and build targets -> empty set"
     return 1
@@ -80,7 +96,8 @@ _fzf-get-bazel-target() {
 
 _fzf-get-bazel-package() {
   local packages package
-  packages=$(bazel query "//..." --output package 2>/dev/null) &&
+  local target_scope=$(_get_bazel_targets_scope)
+  packages=$(bazel query "${target_scope}" --output package 2>/dev/null) &&
   package=$(echo "$packages" | fzf +m +s) &&
   echo "//$package"
 }
@@ -109,7 +126,7 @@ bindkey '^o' _fzf-paste-bazel-package
 # core
 _fzf-build-bazel-target() {
   _check-in-bazel-workspace &&
-  target=$(fzf-get-bazel-target --no_test) &&
+  target=$(_fzf-get-bazel-target --no_test) &&
   bazel build "$target"
 }
 # widget
@@ -185,11 +202,13 @@ bds() {
 }
 
 bu() {
-  bazel query "rdeps(\"//...\", ${@})"
+  local target_scope=$(_get_bazel_targets_scope)
+  bazel query "rdeps(${target_scope}, ${@})"
 }
 
 bus() {
-  bazel query "rdeps(\"//...\", ${@}, 1)"
+  local target_scope=$(_get_bazel_targets_scope)
+  bazel query "rdeps(${target_scope}, ${@}, 1)"
 }
 
 _get_bazel_help_option_cmd() {
@@ -205,12 +224,13 @@ _get_bazel_help_option_cmd() {
 }
 
 _bazel_fzf_query() {
+  local target_scope=$(_get_bazel_targets_scope)
   if [[ $1 == "test" ]]; then
-    echo 'kind(".*_test", "//...")'
+    echo "kind(\".*_test\", ${target_scope})"
   elif [[ $1 == "build" ]]; then
-    echo '//...'
+    echo "\"${target_scope}\""
   elif [[ $1 == "run" ]]; then
-    echo 'kind(".*_bin", "//...")'
+    echo "kind(\".*_bin\", ${target_scope})"
   fi
 }
 
@@ -269,17 +289,19 @@ _fzf_complete_bazel() {
     args+="$i"
   done
 
+  local target_scope=$(_get_bazel_targets_scope)
+
   if [[ "${args[2]}" == "build" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query '//...' 2>/dev/null
+      bazel query '${target_scope}' 2>/dev/null
     )
   elif [[ "${args[2]}" == "test" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query 'kind(".*_test", "//...")' 2>/dev/null
+      bazel query 'kind(".*_test", "${target_scope}")' 2>/dev/null
     )
   elif [[ "${args[2]}" == "run" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query 'kind(".*_bin", "//...")' 2>/dev/null
+      bazel query 'kind(".*_bin", "${target_scope}")' 2>/dev/null
     )
   elif [[ "${args[-1]}" == -* ]] && [[ ! "$@" =~ " -- " ]]; then
     bazel_options_cmd=$(_get_bazel_help_option_cmd "${args[2]}")
