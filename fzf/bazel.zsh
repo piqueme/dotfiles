@@ -135,7 +135,7 @@ _fzf-build-bazel-target-widget() {
   zle reset-prompt
 }
 zle -N _fzf-build-bazel-target-widget
-bindkey ';be' _fzf-build-bazel-target-widget
+bindkey ';bb' _fzf-build-bazel-target-widget
 
 # core
 _fzf-test-bazel-target() {
@@ -293,15 +293,15 @@ _fzf_complete_bazel() {
 
   if [[ "${args[2]}" == "build" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query '${target_scope}' 2>/dev/null
+      bazel query "${target_scope}" 2>/dev/null
     )
   elif [[ "${args[2]}" == "test" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query 'kind(".*_test", "${target_scope}")' 2>/dev/null
+      bazel query 'kind(".*_test", '"${target_scope}"')' 2>/dev/null
     )
   elif [[ "${args[2]}" == "run" ]] && [[ ${args[-1]} != -* ]] && [[ ! "$@" =~ " -- " ]]; then
     _fzf_complete --multi --reverse --prompt="bazel> " -- "$@" < <(
-      bazel query 'kind(".*_bin", "${target_scope}")' 2>/dev/null
+      bazel query 'kind(".*_bin", '"${target_scope}"')' 2>/dev/null
     )
   elif [[ "${args[-1]}" == -* ]] && [[ ! "$@" =~ " -- " ]]; then
     bazel_options_cmd=$(_get_bazel_help_option_cmd "${args[2]}")
