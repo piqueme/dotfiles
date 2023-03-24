@@ -1,5 +1,36 @@
 local M = {}
 
+-- hacky ass function to load settings from individual servers
+local function setup_servers()
+  path_status_ok, Path = pcall(require, 'plenary.path')
+  lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
+
+  if not path_status_ok or not lspconfig_status_ok then
+    print("Error requiring 'path' or 'lspconfig' when setting up LSP server settings.")
+    return
+  end
+
+  server_setting_paths = vim.split(
+    vim.fn.glob('~/.config/nvim/lua/lsp-settings/*.lua'), '\n'
+  )
+  for i, settings_pathname in pairs(server_setting_paths) do
+    run_dir = '~/.config/nvim/lua'
+    settings_path = Path:new(settings_pathname)
+    normalized_settings_path = Path:new(settings_path:normalize(run_dir))
+    settings_rel_path = normalized_settings_path:make_relative(run_dir)
+    settings_module = string.gsub(settings_rel_path, '%.lua$', '')
+    server_name = string.gsub(settings_module, 'lsp%-settings/', '')
+
+    settings = require(settings_module)
+    lspconfig[server_name].setup {
+      settings = {
+        [server_name] = settings
+      }
+    } 
+  end
+end
+
+
 M.config = function()
   local mason_status_ok, mason = pcall(require, "mason")
   local mason_lsp_status_ok, masonlsp = pcall(require, "mason-lspconfig")
@@ -52,16 +83,7 @@ M.config = function()
     border = "rounded"
   })
 
-  -- extend LSP settings for different language servers
-  lspconfig.gopls.setup {}
-  -- lsp_installer.on_server_ready(function(server)
-  --   local opts = server:get_default_options()
-  --   local present, serverConfig = pcall(require, "test.servers." .. server.name)
-  --   if present then
-  --     opts = vim.tbl_deep_extend("force", serverConfig, opts)
-  --   end
-  --   server:setup(opts)
-  -- end)
+  setup_servers {}
 end
 
 return M
