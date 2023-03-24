@@ -37,6 +37,11 @@ M.config = function()
   map("n", "<leader>bs", "<cmd>w<CR>", mapOpts)
   -- NOTE: Depend on Telescope
   map("n", "<leader>bf", "<cmd>Telescope buffers<CR>", mapOpts)
+  -- TAB MANAGEMENT
+  map("n", "<leader>tn", "<cmd>tabn", mapOpts)
+  map("n", "<leader>tp", "<cmd>tabp", mapOpts)
+  map("n", "<leader>to", "<cmd>tabnew", mapOpts)
+  map("n", "<leader>tw", "<cmd>tabclose", mapOpts)
 
   -- FILE AND STRING NAVIGATION
   map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", mapOpts)
