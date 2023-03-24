@@ -45,8 +45,8 @@ M.config = function()
   map("n", "<leader>fo", "<cmd>Neotree focus<CR>", mapOpts)
 
   -- ANNOTATION AND DOCUMENTATION
-  map("n", "<leader>ac", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", mapOpts)
-  map("v", "<leader>ac", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", mapOpts)
+  map("n", "<leader>ac", "<Plug>(comment_toggle_linewise_current)", mapOpts)
+  map("v", "<leader>ac", "<Plug>(comment_toggle_linewise_visual)", mapOpts)
 
   -- GIT
   map("n", "<leader>gn", '<cmd>lua require("gitsigns").next_hunk()<CR>', mapOpts)
