@@ -1,0 +1,44 @@
+How can I get all my stuff to mount in the dev docker?
+I need to mount my dotfiles dir
+I need to mount all the binaries my dotfiles point to
+OR
+I need a way to reproduce the dependencies outside of the dev docker
+
+SOME GENERAL PRINCIPLES
+  - have shell scripts that collect all the dependencies
+  - for your environment to be portable, you can also use ZSH plugins
+  - make sure the whole dotfiles dir is mounted
+  - have a way to set up symlinks from ~/.config to the tools of choice
+
+MY TOOLS
+  - zsh
+  - fzf
+  - bat
+  - exa
+  - git
+  - nvim
+  - tmux
+  - docker
+  - bazel
+  - alacritty
+
+OUTER INSTALLATION PROCESS
+  - apt install
+    - tmux
+
+INNER INSTALLATION PROCESS
+  - apt install
+    - zsh
+    - bat
+    - exa
+    - fd
+  - snap install
+    - nvim
+  - zinit install
+    - fzf
+  - MOUNT
+    - dotfiles
+    - symlinks
+      - zshrc
+      - alacritty
+      - nvim/init.lua

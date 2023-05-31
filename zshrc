@@ -1,5 +1,6 @@
 # General
-export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin"
 DOTFILE="$(readlink -f "${(%):-%N}")"
 DOTDIR="$(dirname "$DOTFILE")"
 
@@ -11,6 +12,8 @@ export KEYTIMEOUT=10
 source "$DOTDIR/zsh/core.zsh"
 source "$DOTDIR/zsh/tmux.zsh"
 source "$DOTDIR/zsh/git.zsh"
+# for converting webp files to jpeg
+source "$DOTDIR/zsh/wpconv.zsh"
 
 # Languages
 source "$DOTDIR/zsh/go.zsh"
@@ -49,6 +52,10 @@ zinit lucid as=command pick="bin/(fzf|fzf-tmux)" \
     multisrc="shell/key-bindings.zsh shell/completion.zsh" \
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
+
+# Install Bazelisk as ZSH plugin
+zinit ice as=program from"gh-r" mv"bazelisk* -> bazelisk" bpick="*linux-amd64"
+zinit light bazelbuild/bazelisk
 
 # PROMPT
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'

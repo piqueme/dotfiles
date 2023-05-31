@@ -97,7 +97,7 @@ packer.startup {
       "jose-elias-alvarez/null-ls.nvim",
       commit = "456cd27",
       config = function()
-        require("null-ls").setup()
+        require("configs.null-ls").config()
       end
     }
     use {
@@ -203,10 +203,13 @@ packer.startup {
     }
     use {
       "sindrets/diffview.nvim",
-      commit = "009beb8",
+      commit = "7987d7f",
       requires = {
         "nvim-lua/plenary.nvim"
-      }
+      },
+      config = function()
+        require("configs.diffview").config()
+      end
     }
   end,
   config = packer_config
@@ -221,130 +224,3 @@ vim.cmd [[
 ]]
 
 require("mappings").config()
-
--- TODO: Environment Toggles
---  Slim Mode: No Syntax, No LSP
--- TODO: Noice.nvim (nicer command line)
--- TODO: lsp_lines (multiple LSP issues at once)
--- TODO: unit testing setup (neotest)
--- TODO: learn about debug adapter
--- TODO: Fix neo-tree
--- TODO: Split-Join utilities
--- TODO: Easy way to see key mappings
---
--- Help / Documentation
---  whichkey
---  search mappings
---  search help tags
---  comment / uncomment
---
--- Git
---  show file history
---    diff with commit
---    move code from diff to current / index
---  next / prev hunk
---  search changed hunks
---  stage / unstage hunk
---  stage / unstage buffer
---
--- GitHub
---  search PRs (fuzzy)
---  search issues (fuzzy)
---  checkout PR
---  edit issue (?)
---  edit PR (?)
---
--- File Navigation
---  fuzzy finder (project, below current, with hidden)
---  toggle tree
---
--- Buffer and Window Management
---   prev / next buffer
---   buffer search
---   buffer close
---   buffer save
---   split left / right / up / down
---
--- Core Editing
---   split / join
---   surround
---
--- Testing
---  (Bazel needs integration)
---
--- UI
---  statusline
---  tree
---  fuzzy finder
---  autocomplete
---  command bar (Noice)
---
--- Message Clients
---  HTTP
---  SQL
---  gRPC
---
--- REPL
---
--- Workflows
---  Language ISP
---    View LSP Logs
---    Detach LSP
---    Search LSPs
---
---    Search Symbols (File)
---    Search Symbols (Workspace)
---    Show Diagnostics (File)
---    Show Diagnostics (Workspace)
---    Go to Definition
---    Prev / Next Diagnostic
---    Find References for Selection (File)
---    Find References for Selection (Workspace)
---
---  Formatter / Linter
---    View LSP Logs
---    Detach LSP
---    Search LSPs
---
---    Prev / Next Diagnostic
---    Format File
---
---  Git 
---    Prev / Next Change
---    Search changed files (workspace)
---    Stage / Unstage Hunk
---
---  General Navigation
---    Prev / Next Buffer
---    Fuzzy Search Buffers
---    Fuzzy Search Files (Hidden, Ignored)
---    Save / Quit Buffer
---  
---  Debugging
---    Toggle Breakpoint
---    Step In / Out
---    Step Over
---    ...
---
---  Unit Testing
---
---  Integration Testing w/ Docker
---
---  Adjusting Environment Variables
---
---  Sharing
---    Link to Code
---    Code Snippet
---
---  Requests
---
---  REPL
---
---  Documentation
---    Search Man Pages
---    Search READMEs
---    Search vim help docs
---    Search key mappings
---
---  Refactoring
---    Finding everything matching pattern (TreeSitter)
