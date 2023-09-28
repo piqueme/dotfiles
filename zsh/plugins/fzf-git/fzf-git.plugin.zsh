@@ -24,8 +24,8 @@ _fzf_branches() {
   fi
 
   # NOTE: We use cut to remove the asterisk for the current branch.
-  branches=$(git branch -vv --sort=-committerdate | cut -c 3-) &&
-  lines=$(fzf --expect=ctrl-d,ctrl-v,ctrl-s,ctrl-o,ctrl-x <<< "$branches") &&
+  branches=$(git branch -vv --sort=-committerdate --color=always | cut -c 3-) &&
+  lines=$(fzf --ansi --expect=ctrl-d,ctrl-v,ctrl-s,ctrl-o,ctrl-x <<< "$branches") &&
   key="$(head -1 <<< "$lines")"
   branch="$(sed 1d <<< "$lines")"
   branchname="$(_parse_branch_from_git "$branch")"
@@ -84,8 +84,8 @@ _fzf_commits() {
   fi
 
   # NOTE: We use cut to remove the asterisk for the current branch.
-  commits=$(git log --pretty=format:"$logformat") &&
-  lines=$(fzf --expect=ctrl-d,ctrl-v,ctrl-s,ctrl-o,ctrl-r,ctrl-u <<< "$commits") &&
+  commits=$(git log --pretty=format:"$logformat" --color=always) &&
+  lines=$(fzf --ansi --expect=ctrl-d,ctrl-v,ctrl-s,ctrl-o,ctrl-r,ctrl-u <<< "$commits") &&
   key="$(head -1 <<< "$lines")"
   commit="$(sed 1d <<< "$lines")"
   commithash="$(_parse_hash_from_pretty_format "$commit")"
