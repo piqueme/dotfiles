@@ -1,9 +1,8 @@
 _warn_deps_do_not_exist() {
   # This warning could be better. Right now it enters into the current
-  # command line and requires you to hit "Enter" to get to the next prompt.
-  # I probably need to understand ZSH widgets better.
+  # command line, but ideally should be printed to stdout.
   local yellow='\033[1;33m'
-  if ! command -v fzf > /dev/null 2>&1 || ! command -v git > /dev/null 2>&1; then
+  if ! command -v fzf > /dev/null 2>&1 || ! command -v gitx > /dev/null 2>&1; then
     echo "${yellow}fzf or git not available. Cannot run fzf-git."
     return 1
   fi
@@ -20,6 +19,7 @@ _fzf_branches() {
   local branches lines key branch branchname
 
   if ! _warn_deps_do_not_exist; then
+    zle reset-prompt
     return 1 
   fi
 
@@ -80,6 +80,7 @@ _fzf_commits() {
   logformat=$(_commit_pretty_format)
 
   if ! _warn_deps_do_not_exist; then
+    zle reset-prompt
     return 1 
   fi
 
