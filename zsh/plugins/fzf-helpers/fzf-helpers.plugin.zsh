@@ -106,28 +106,3 @@ fzf-paste-file-git() {
 }
 zle -N fzf-paste-file-git
 bindkey 'yp' fzf-paste-file-git
-
-fzf-paste-branch-git() {
-  local branches branch branchname
-  # note we use cut to remove the asterisk for current branch
-  branches=$(git branch -vv --sort=-committerdate | cut -c 3-) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  branchname=$(echo "$branch" | awk '{print $1}' | sed "s/.* //") &&
-  BUFFER=$LBUFFER$branchname $RBUFFER &&
-  zle redisplay &&
-  CURSOR=$(($CURSOR + $#branchname + 2))
-}
-zle -N fzf-paste-branch-git
-bindkey 'gb' fzf-paste-branch-git
-
-fzf-paste-commit-git() {
-  local commits commit
-  commits=$(git log --pretty=oneline --abbrev-commit) &&
-  commit=$(echo "$commits" | fzf +m +s) &&
-  commithash=$(echo "$commit" | awk '{print $1}') &&
-  BUFFER=$LBUFFER$commithash $RBUFFER &&
-  zle redisplay &&
-  CURSOR=$(($CURSOR + $#commithash + 2))
-}
-zle -N fzf-paste-commit-git
-bindkey 'gh' fzf-paste-commit-git

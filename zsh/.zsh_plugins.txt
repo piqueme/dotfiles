@@ -27,5 +27,6 @@ $ZDOTDIR/plugins/history
 $ZDOTDIR/plugins/fzf-catppuccin
 $ZDOTDIR/plugins/fzf-helpers
 $ZDOTDIR/plugins/fzf-bazel
+$ZDOTDIR/plugins/fzf-git
 $ZDOTDIR/plugins/p10k-config
 $ZDOTDIR/functions kind:fpath
