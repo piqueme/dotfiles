@@ -1,0 +1,28 @@
+#
+# Antidote (https://getantidote.github.io) plugins file.
+# Lists all ZSH plugins used in our ZSH environment.
+# Includes both external and local plugins.
+#
+
+# Prompt
+romkatv/powerlevel10k
+
+# Standard shell helpers.
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-completions kind:fpath path:src
+
+# Personal plugins.
+# Basic stuff like default editor settings.
+$ZDOTDIR/plugins/core
+# Git aliases and common functions.
+$ZDOTDIR/plugins/git
+# Helpful tmux aliases.
+$ZDOTDIR/plugins/tmux
+$ZDOTDIR/plugins/completion
+$ZDOTDIR/plugins/history
+$ZDOTDIR/plugins/fzf-catppuccin
+$ZDOTDIR/plugins/fzf-helpers
+$ZDOTDIR/plugins/fzf-bazel
+$ZDOTDIR/plugins/p10k-config
+$ZDOTDIR/functions kind:fpath
