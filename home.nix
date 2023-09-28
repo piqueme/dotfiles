@@ -92,6 +92,8 @@ in {
       plugins = [
         # ZSH Prompt Plugin
         "romkatv/powerlevel10k"
+        # ZSH Profiling tool
+        "romkatv/zsh-bench kind:path"
         # Standard shell helpers.
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "zsh-users/zsh-autosuggestions kind:defer"
