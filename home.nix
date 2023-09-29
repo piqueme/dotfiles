@@ -3,8 +3,6 @@ let
   dotdir = "${builtins.toString ./.}";
   zdotdir = "${dotdir}/zsh";
 in {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "obe";
   home.homeDirectory = "/home/obe";
 
@@ -107,6 +105,7 @@ in {
         "${zdotdir}/plugins/fzf-catppuccin"
         "${zdotdir}/plugins/fzf-helpers"
         "${zdotdir}/plugins/fzf-bazel"
+        "${zdotdir}/plugins/fzf-git"
         "${zdotdir}/plugins/p10k-config"
         "${zdotdir}/functions kind:fpath"
       ];
@@ -118,6 +117,9 @@ in {
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
+    '';
+    initExtra = ''
+      eval "$(zoxide init zsh)"
     '';
   };
 }

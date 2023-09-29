@@ -21,3 +21,9 @@ source "$ANTIDOTE_DIR/antidote.zsh"
 
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
+
+# initialize zoxide if it's available. zoxide will enable convenient
+# directory jumping: see https://github.com/ajeetdsouza/zoxide
+if command -v zoxide; then
+  eval "$(zoxide init zsh)"
+fi
