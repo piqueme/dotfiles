@@ -1,0 +1,12 @@
+import:
+  # NOTE: This requires an external dependency (Catppuccin for Alacritty) 
+  # to be git cloned in to the config folder
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+font:
+  normal:
+    family: JetBrainsMono Nerd Font Mono
+  bold:
+    family: JetBrainsMono Nerd Font Mono
+  italic:
+    family: JetBrainsMono Nerd Font Mono
+  size: 12.0
