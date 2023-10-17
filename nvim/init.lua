@@ -55,12 +55,11 @@ packer.startup {
         require("configs.icons").config()
       end
     }
-    use "EdenEast/nightfox.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
     -- Utility functions
     use { 
       "nvim-lua/plenary.nvim",
-      commit = "253d348"
+      commit = "5001291"
     }
     -- Navigation
     use { 
@@ -74,28 +73,28 @@ packer.startup {
     -- Component Library
     use {
       "MunifTanjim/nui.nvim",
-      commit = "0dc148c",
+      commit = "c0c8e34",
       module = "nui"
     }
     -- Language Support
     use {
       "williamboman/mason.nvim",
-      commit = "51228a6"
+      commit = "cd7835b"
     }
     use {
       "williamboman/mason-lspconfig.nvim",
-      commit = "e4badf7"
+      commit = "e7b64c1"
     }
     use {
       "neovim/nvim-lspconfig",
-      commit = "a557dd4",
+      commit = "e49b1e9",
       config = function()
         require("configs.nvim-lspconfig").config()
       end
     }
     use {
       "jose-elias-alvarez/null-ls.nvim",
-      commit = "456cd27",
+      commit = "0010ea9",
       config = function()
         require("configs.null-ls").config()
       end
@@ -103,7 +102,7 @@ packer.startup {
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
-      commit = "6733764",
+      commit = "fd3176d",
       config = function()
         require("trouble").setup {}
       end
@@ -119,14 +118,14 @@ packer.startup {
     }
     use {
       "numToStr/Comment.nvim",
-      commit = "6821b3a",
+      commit = "0236521",
       config = function()
         require("Comment").setup()
       end
     }
     use {
       "kylechui/nvim-surround",
-      commit = "8680311",
+      commit = "1c2ef59",
       config = function()
         require("nvim-surround").setup()
       end
@@ -134,7 +133,7 @@ packer.startup {
     -- Fuzzy Finder
     use {
       "nvim-telescope/telescope.nvim",
-      commit = "a3f17d3",
+      commit = "74ce793",
       cmd = "Telescope",
       module = "telescope",
       requires = "nvim-lua/plenary.nvim",
@@ -146,7 +145,7 @@ packer.startup {
     use {
       "nvim-neo-tree/neo-tree.nvim",
       module = "neo-tree",
-      tag = "v2.42",
+      commit = "63ebe87",
       cmd = "Neotree",
       requires = {
         "nvim-lua/plenary.nvim",
@@ -160,7 +159,7 @@ packer.startup {
     -- Autocomplete
     use {
       "hrsh7th/nvim-cmp",
-      commit = "3192a0c57837c1ec5bf298e4f3ec984c7d2d60c0",
+      commit = "5dce1b7",
       event = "InsertEnter",
       module = "cmp",
       config = function()
@@ -179,13 +178,13 @@ packer.startup {
     }
     use {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed",
+      commit = "44b16d1",
       after = "nvim-cmp"
     }
     -- Documentation
     use {
       "folke/which-key.nvim",
-      commit = "fb02773",
+      commit = "fc25407",
       requires = {
         "nvim-telescope/telescope.nvim",
       },
@@ -196,14 +195,14 @@ packer.startup {
     -- Git
     use {
       "lewis6991/gitsigns.nvim",
-      commit = "3b6c0a6",
+      commit = "ff01d34",
       config = function()
         require("gitsigns").setup()
       end
     }
     use {
       "sindrets/diffview.nvim",
-      commit = "7987d7f",
+      commit = "0437ef8",
       requires = {
         "nvim-lua/plenary.nvim"
       },
@@ -211,6 +210,20 @@ packer.startup {
         require("configs.diffview").config()
       end
     }
+    -- ChatGPT
+    -- use {
+    --   "jackMort/ChatGPT.nvim",
+    --   config = function()
+    --     require("chatgpt").setup({
+    --       api_key_cmd = "echo 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"
+    --     })
+    --   end,
+    --   requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim"
+    --   }
+    -- }
   end,
   config = packer_config
 }
