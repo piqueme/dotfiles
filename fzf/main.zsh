@@ -101,8 +101,6 @@ fzf-paste-file-git() {
 zle -N fzf-paste-file-git
 bindkey 'yp' fzf-paste-file-git
 
-# fzf-paste-file-project() {}
-
 fzf-paste-branch-git() {
   local branches branch branchname
   # note we use cut to remove the asterisk for current branch

@@ -13,6 +13,38 @@ export FZF_DEFAULT_OPTS="--height 40% --border"
 # bindkey '^P' fzf-completion
 # bindkey '^I' $fzf_default_completion
 
+# FILES
+#   - SCOPE: home, nested, project
+#   - open with editor
+#   - paste to command
+#   - remove
+#   - copy content to clipboard
+#
+# DIRECTORY
+#   - SCOPE
+#   - switch
+#   - remove
+#   - paste
+#
+# HOSTS
+#   - Set up SSH connection
+#   - Copy config
+#   - Paste connection string
+# 
+# PROCESSES
+#   - SCOPE: user, root
+#   - Kill
+#   - Nice / Unnice
+#   - print details (e.g. memory usage)
+#
+# DOCKER IMAGES
+# DOCKER CONTAINERS
+#
+# PROJECTS
+#   - switch
+#
+# ADP
+
 fzf-edit-file-recursive() {
   local filename
   filename=$(fd -Lp -t f | fzf) &&
