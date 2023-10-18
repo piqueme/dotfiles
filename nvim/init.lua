@@ -17,10 +17,10 @@ vim.opt.rtp:prepend(lazypath)
 --- lazy.nvim plugin declarations
 plugins = {
   -- Colorscheme
-  { 
+  [
     "catppuccin/nvim", 
     name = "catppuccin"
-  },
+  ],
   -- Icons
   {
     "kyazdani42/nvim-web-devicons",
@@ -65,7 +65,8 @@ plugins = {
     commit = "0010ea9",
     config = function()
       require("configs.null-ls").config()
-    end
+    end,
+    lazy = true
   },
   -- Syntax
   -- {
@@ -146,10 +147,9 @@ plugins = {
   {
     "folke/which-key.nvim",
     commit = "fc25407",
-    dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       require('configs.which-key').config()
-    end
+    end,
   },
   -- Git
   {
@@ -165,7 +165,12 @@ plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("configs.diffview").config()
-    end
+    end,
+    lazy = true,
+    cmd = {
+      "DiffviewFileHistory",
+      "DiffviewOpen",
+    }
   }
 }
 require("lazy").setup(plugins)
