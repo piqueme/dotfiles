@@ -1,6 +1,6 @@
 { config, dotdir, pkgs, ... }:
 let
-  dotdir = "${builtins.toString ./.}";
+  dotdir = "${builtins.toString ./..}";
   zdotdir = "${dotdir}/zsh";
 in {
   home.username = "obe";
@@ -37,7 +37,7 @@ in {
     # Helpful file jumping.
     pkgs.zoxide
     # Better "ls" for directory traversal.
-    pkgs.exa
+    pkgs.eza
     # Faster file-finder (vs. `find`).
     pkgs.fd
     # Fast and usable text search tool
@@ -69,19 +69,36 @@ in {
     # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    ".p10k.zsh".source = ../zsh/p10k.zsh;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # Ideally we could let home-manager control this.
+    # For whatever reason, NixOS places its own.
+    # ".config/i3" = {
+    #   source = ../i3;
+    #   recursive = true;
+    # };
+
+    ".config/polybar" = {
+      source = ../polybar;
+      recursive = true;
+    };
+
+    # TODO: Figure out a good way of setting the shell_gpt rc
+    # despite requiring a secret from OpenAI.
+    # ".config/shell_gpt" = {
+    #   source = ../shell_gpt;
+    #   recursive = true;
+    # };
+
+    ".config/alacritty" = {
+      source = ../alacritty;
+      recursive = true;
+    };
+
+    # TODO: Not sure if I can have home-manager be responsible
+    # for X environment settings.
+    # ".Xmodmap".source = ../x/Xmodmap
   };
 
   # You can also manage environment variables but you will have to manually
@@ -123,7 +140,6 @@ in {
         "${zdotdir}/plugins/fzf-helpers"
         "${zdotdir}/plugins/fzf-bazel"
         "${zdotdir}/plugins/fzf-git"
-        "${zdotdir}/plugins/p10k-config"
         "${zdotdir}/functions kind:fpath"
       ];
     };
@@ -136,6 +152,7 @@ in {
       fi
     '';
     initExtra = ''
+      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
       eval "$(zoxide init zsh)"
     '';
   };
