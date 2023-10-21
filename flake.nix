@@ -1,5 +1,5 @@
 {
-  description = "My Home Manager flake";
+  description = "System and user environment Nix configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -14,10 +14,20 @@
     in {
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
       homeConfigurations = {
-        # TODO: Modify "your.username" below to match your username
         "obe" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ ./nixos/home.nix ];
+        };
+      };
+      nixosConfigurations = {
+        "obe-shard" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ 
+            ./nixos/configuration.nix 
+            home-manager.nixosModules.home-manager {
+              home-manager.users.obe = import ./nixos/home.nix;
+            }
+          ];
         };
       };
     };

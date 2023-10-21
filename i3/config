@@ -86,7 +86,7 @@ bindsym $mod+$smod+o move container to workspace number $ws3
 bindsym $mod+$smod+p move container to workspace number $ws4
 
 # Volume Bindings
-bindsym XF86AudioMute exec "wpctl get-volume @DEFAULT_SINK@"
+bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
 bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%-"
 bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%+"
 

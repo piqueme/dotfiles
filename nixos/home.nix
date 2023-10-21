@@ -18,25 +18,42 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    # Supah fast terminal emulator
+    pkgs.alacritty
+    # Terminal multiplexer and session management
+    pkgs.tmux
+    # Daily driver text editor
+    pkgs.neovim
+
     # Common network URL fetching tool.
     pkgs.curl
     # Ergonomic JSON manipulation in the terminal.
     pkgs.jq
     # More usable quick text view (e.g. includes syntax highlighting vs. cat).
     pkgs.bat
-    # System monitoring tool.
-    pkgs.glances
 
     # Meta-tool: fuzzy finder. Very useful UI for acting on list items.
     pkgs.fzf
     # Helpful file jumping.
     pkgs.zoxide
     # Better "ls" for directory traversal.
-    pkgs.eza
+    pkgs.exa
     # Faster file-finder (vs. `find`).
     pkgs.fd
     # Fast and usable text search tool
     pkgs.ripgrep
+    # Terminal file explorer
+    pkgs.nnn
+
+    # GPT in your terminal: helpful for doc searching, code generation
+    pkgs.shell_gpt
+
+    # System monitoring tool.
+    pkgs.glances
+    # Container monitoring tool.
+    pkgs.ctop
+    # Container management tool.
+    pkgs.docker
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
