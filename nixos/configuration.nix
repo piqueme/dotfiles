@@ -107,6 +107,7 @@
     isNormalUser = true;
     description = "Sumit Gogia";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
@@ -142,6 +143,9 @@
     xorg.xmodmap
     xorg.xev
   ];
+
+  # Make ZSH available as a system package.
+  programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
