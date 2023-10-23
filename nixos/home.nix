@@ -72,6 +72,11 @@ in {
     #   recursive = true;
     # };
 
+    ".config/rofi" = {
+      source = ../rofi;
+      recursive = true;
+    };
+
     ".config/polybar" = {
       source = ../polybar;
       recursive = true;
