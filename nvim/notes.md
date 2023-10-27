@@ -18,18 +18,18 @@
 ### Workflows
 #### Intelligence
 1. Go to definition
-  - text: no alternate
+  - text: no alternate (search)
 1. Hover / peek definition
-  - text: no alternate
+  - text: no alternate (live grep)
 1. Hover / peek signature
-  - text: no alternate
+  - text: no alternate (live grep)
 1. Find references (file) / searchable
   - text: grep (file), visual selection, word under cursor, telescope
 1. Find references (workspace) / searchable
   - text: grep (file), visual selection, word under cursor, telescope
 1. Find warn / error (file) / searchable
   - text: only syntax?
-1. Find warn / error (workspace) / searchable
+1. Find warn / error (workspace) / searchable (Telescope diagnostics?, not Trouble)
 1. Format file (manual, on save)
 1. Rename symbol under cursor (in file, in workspace)
   - text: search/replace (file, workspace)
@@ -51,10 +51,11 @@ Hard part: handling generated code by `bazel`.
 1. Resolve rebase conflicts in diff view
 
 #### Test Client
-1. HTTP Client
-1. PromQL Client
-1. SQL Client
-1. GraphQL Client / Explorer
+1. HTTP Client - `rest.nvim`
+1. PromQL Client - NOPE, use Grafana
+1. SQL Client - `vim-dadbod`
+1. GraphQL Client / Explorer - NOPE, use Graphql Explorer
+1. REPL? - `sniprun`
 
 #### Basic Editing
 1. Text Object (Function)
@@ -100,3 +101,35 @@ Hard part: handling generated code by `bazel`.
 1. "Copy code section" -> System Text, Image [DONE, separate, Flameshot, tmux]
 1. Get Github link for code file / lines
 1. Get Patch for current diff -> pastable
+
+#### Bazel
+1. Telescope Bazel Targets - build / test / paste
+1. fzf bazel targets, make sure we're caching for speed
+1. autocomplete Bazel targets in code
+
+#### Issue & PR Management
+1. View My Issues
+    - This Release
+    - P1
+    - sort by time
+    - (ideally fuzzy search)
+1. Drill Issue
+    - See Comments
+    - Add Comment
+1. Create Issue (with default labels)
+    - defaults (team, priority, scope)
+1. View My PRs
+    - Sort by time
+    - See checks fulfilled or not
+
+#### Config Management
+1. Modularize
+    - LSP Settings
+    - Plugin Setups
+    - Theme
+1. Use Lua
+1. Register mappings with which key
+1. Each module exposes functions for mappings
+1. Big stuff
+    - Telescope
+
