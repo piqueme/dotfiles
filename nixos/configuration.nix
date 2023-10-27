@@ -44,14 +44,17 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-chinese-addons
-      fcitx5-gtk
-    ];
-  };
+  # # Language Support
+  # # Ideally should get this working, but
+  # # for whatever reason the addons do not get installed.
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [
+  #     fcitx5-mozc
+  #     fcitx5-chinese-addons
+  #     fcitx5-gtk
+  #   ];
+  # };
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -155,6 +158,15 @@
 
   # Make ZSH available as a system package.
   programs.zsh.enable = true;
+
+  programs._1password.enable = true; 
+  programs._1password-gui = {
+    enable = true; 
+    # Just in case we're using a desktop environment which
+    # needs this for CLI support / system authentication.
+    # See https://nixos.wiki/wiki/1Password 
+    polkitPolicyOwners = [ "obe" ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
