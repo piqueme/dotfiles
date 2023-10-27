@@ -17,10 +17,10 @@ vim.opt.rtp:prepend(lazypath)
 --- lazy.nvim plugin declarations
 plugins = {
   -- Colorscheme
-  [
+  {
     "catppuccin/nvim", 
     name = "catppuccin"
-  ],
+  },
   -- Icons
   {
     "kyazdani42/nvim-web-devicons",

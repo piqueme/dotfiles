@@ -52,14 +52,6 @@ M.config = function()
   -- ANNOTATION AND DOCUMENTATION
   map("n", "<leader>ac", "<Plug>(comment_toggle_linewise_current)", mapOpts)
   map("v", "<leader>ac", "<Plug>(comment_toggle_linewise_visual)", mapOpts)
-
-  -- GIT
-  map("n", "<leader>gn", '<cmd>lua require("gitsigns").next_hunk()<CR>', mapOpts)
-  map("n", "<leader>gp", '<cmd>lua require("gitsigns").prev_hunk()<CR>', mapOpts)
-  map("n", "<leader>gs", '<cmd>lua require("gitsigns").stage_hunk()<CR>', mapOpts)
-  map("n", "<leader>gu", '<cmd>lua require("gitsigns").undo_stage_hunk()<CR>', mapOpts)
-  map("n", "<leader>gb", '<cmd>lua require("gitsigns").stage_buffer()<CR>', mapOpts)
-  map("n", "<leader>gr", '<cmd>lua require("gitsigns").reset_buffer()<CR>', mapOpts)
 end
 
 return M

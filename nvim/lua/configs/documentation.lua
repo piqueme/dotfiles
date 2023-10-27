@@ -1,0 +1,12 @@
+-- Documentation
+-- Toggle comment (+ visual mode)
+-- DocSearch
+--  Example Usages
+--  List common alternatives of tools
+--  Pros / Cons of tool
+--  Raw
+--  Edit Code With Instructions
+--  (paste generated into buffer)
+--  (add_tests), can give example
+--  (explain_code)
+--  (write docstring)

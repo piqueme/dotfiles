@@ -1,0 +1,20 @@
+-- TODO: fill this out
+-- This should handle buffers and windows and tabs and file movement
+-- file tree
+-- buffer/file search
+--
+-- Telescope
+--  you can specify grep tool - ideally ripgrep, though that is default
+--  viewing previews could be done with Bat (nice tool)
+--  consider git files, don't just ignore hidden, allow passing a glob pattern?
+--
+-- buffers
+-- tabs
+-- panes
+-- tmux
+--
+-- files
+-- filetree
+-- in-file search
+-- repo grep (live)
+-- repo grep (under cursor)

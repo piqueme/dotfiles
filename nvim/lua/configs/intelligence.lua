@@ -1,0 +1,22 @@
+-- telescope
+-- lsp document symbols
+-- lsp workspace symbols
+-- diagnostics
+-- references
+--
+-- FUNC: Go to definition
+-- FUNC: Show signature
+-- FUNC: Find references, file (telescope)
+-- FUNC: Find references, project (telescope)
+-- FUNC: Traverse diagnostics (file, workspace)
+--  prev/next diagnostic
+-- FUNC: Rename symbol
+--
+-- FUNC: List Language Servers
+-- FUNC: List Linters / Formatters
+--
+-- (Stretch)
+-- Make a Bazel LSP. Handles BUILD files and Starlark.
+--  Needs parser for BUILD and Starlark files.
+--  Needs to index targets in BUILD files, background.
+--  Needs to index rule names from Starlark in background.

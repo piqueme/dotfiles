@@ -1,0 +1,5 @@
+-- likely needs to be configured per project
+-- FUNC: run application from entry point
+-- FUNC: compile application from entry point
+-- FUNC: send visually-selected code to REPL
+-- FUNC: toggle "REPL" for viewing
