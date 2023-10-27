@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CAPS_SYMBOL="%{F#c0392b}⇧%{F-}"
 IMLIST_FILE="/tmp/fcitx5-imlist"
