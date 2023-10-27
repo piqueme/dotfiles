@@ -1,1 +1,5 @@
+configuration {
+  modes: "window,drun,run,filebrowser";
+}
+
 @theme "~/.config/rofi/themes/material-red.rasi"
