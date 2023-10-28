@@ -157,7 +157,10 @@
   ];
 
   # Make ZSH available as a system package.
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = false;
+  };
 
   programs._1password.enable = true; 
   programs._1password-gui = {
