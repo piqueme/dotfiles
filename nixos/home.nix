@@ -48,6 +48,9 @@ in {
     # GPT in your terminal: helpful for doc searching, code generation
     pkgs.shell_gpt
 
+    # News: RSS Reader.
+    pkgs.newsboat
+
     # System monitoring tool.
     pkgs.glances
     # Container monitoring tool.
@@ -116,6 +119,11 @@ in {
       source = ../alacritty;
       recursive = true;
     };
+
+    ".newsboat" = {
+      source = ../newsboat;
+      recursive = true;
+    }
 
     # TODO: Not sure if I can have home-manager be responsible
     # for X environment settings.
