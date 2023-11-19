@@ -118,7 +118,7 @@
   users.users.obe = {
     isNormalUser = true;
     description = "Sumit Gogia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -198,4 +198,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
+  # Set up docker.
+  virtualisation.docker.enable = true;
 }

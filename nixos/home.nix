@@ -54,6 +54,29 @@ in {
     pkgs.ctop
     # Container management tool.
     pkgs.docker
+    # Local Kubernetes testing tool
+    pkgs.kind
+    pkgs.kubectl
+    pkgs.kubernetes-helm
+
+    # Javascript development.
+    pkgs.yarn
+    pkgs.nodejs_18
+
+    # C compilation support.
+    # Should be moved to per-project eventually.
+    pkgs.gcc
+
+    # Go development support.
+    # Should be moved to per-project eventually.
+    pkgs.go
+    pkgs.buf
+    pkgs.protoc-gen-go
+    pkgs.protoc-gen-connect-go
+
+    # Bazel.
+    # Also probably better per-project.
+    pkgs.bazel
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
