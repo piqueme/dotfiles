@@ -50,6 +50,8 @@ in {
 
     # News: RSS Reader.
     pkgs.newsboat
+    # Text-based web browser.
+    pkgs.lynx
 
     # System monitoring tool.
     pkgs.glances
@@ -123,7 +125,7 @@ in {
     ".newsboat" = {
       source = ../newsboat;
       recursive = true;
-    }
+    };
 
     # TODO: Not sure if I can have home-manager be responsible
     # for X environment settings.
