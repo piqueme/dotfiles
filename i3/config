@@ -89,6 +89,10 @@ bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
 bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%-"
 bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%+"
 
+# Screen Brightness Bindings (depends on brightnessctl)
+bindsym XF86MonBrightnessUp exec "brightnessctl --class backlight set +10%"
+bindsym XF86MonBrightnessDown exec "brightnessctl --class backlight set 10%-"
+
 # Window resizing (in resize mode)
 mode "resize" {
   bindsym $wm_setting_key_left resize shrink width 10 px or 10 ppt

@@ -154,6 +154,8 @@
     # keyboard management
     xorg.xmodmap
     xorg.xev
+    # backlight management
+    brightnessctl
   ];
 
   # Make ZSH available as a system package.
