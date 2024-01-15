@@ -83,12 +83,14 @@ M.config = function()
     border = "rounded"
   })
 
+  -- NOTE: These must be installed (e.g. via Mason or separately in the environment).
   lspconfig.gopls.setup {}
   lspconfig.bashls.setup {}
   lspconfig.pyright.setup {}
   lspconfig.sqlls.setup {}
   lspconfig.terraform_lsp.setup {}
   lspconfig.tsserver.setup {}
+  lspconfig.nil_ls.setup {}
 end
 
 return M

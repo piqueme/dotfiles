@@ -1,4 +1,4 @@
-{ config, dotdir, pkgs, ... }:
+{ pkgs, ... }:
 let
   dotdir = "${builtins.toString ./..}";
   zdotdir = "${dotdir}/zsh";
@@ -64,6 +64,9 @@ in {
     pkgs.kubectl
     pkgs.kubernetes-helm
 
+    # Nix language server for general development.
+    pkgs.nil
+
     # Javascript development.
     pkgs.yarn
     pkgs.nodejs_18
@@ -75,9 +78,8 @@ in {
     # Go development support.
     # Should be moved to per-project eventually.
     pkgs.go
-    pkgs.buf
-    pkgs.protoc-gen-go
-    pkgs.protoc-gen-connect-go
+    pkgs.golangci-lint
+    pkgs.gopls
 
     # Bazel.
     # Also probably better per-project.
@@ -138,6 +140,15 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # setup direnv with nix integration. this makes it possible to automatically
+  # source project-level environment variables when switched into a project's directory.
+  # the nix integration particularly makes it faster to load the scoped Nix environment quickly.
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.zsh = {
     enable = true;
