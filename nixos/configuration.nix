@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -44,20 +44,21 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # # Language Support
-  # # Ideally should get this working, but
-  # # for whatever reason the addons do not get installed.
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = with pkgs; [
-  #     fcitx5-mozc
-  #     fcitx5-chinese-addons
-  #     fcitx5-gtk
-  #   ];
-  # };
+  # Language Support
+  # Ideally should get this working, but
+  # for whatever reason the addons do not get installed.
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [
+      anthy
+      libpinyin
+    ];
+  };
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ipafont
+    kochi-substitute
   ];
 
   services.xserver = {
@@ -90,9 +91,6 @@
      enable = true;
     };
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -137,6 +135,10 @@
   environment.systemPackages = with pkgs; [
     # Baseline Image Viewer
     feh
+    # PDF Viewer
+    evince
+    # Image Gallery Viewer (e.g. for Gifs)
+    cinnamon.pix
     # Basic editor
     vim
     # Web browser
@@ -156,6 +158,12 @@
     xorg.xev
     # backlight management
     brightnessctl
+    # common file management tools
+    unzip
+    # screenshot tool
+    flameshot
+    # animated screen recorder
+    peek
   ];
 
   # Make ZSH available as a system package.
@@ -202,4 +210,6 @@
 
   # Set up docker.
   virtualisation.docker.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
