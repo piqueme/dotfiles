@@ -27,3 +27,10 @@ antidote load
 if command -v zoxide; then
   eval "$(zoxide init zsh)"
 fi
+
+# hook direnv if it's available. this makes it possible to automatically
+# source project-level environment variables when switched into a project's directory.
+# very useful for e.g. scoped development environments.
+if command -v direnv; then
+  eval "$(direnv hook zsh)"
+fi
