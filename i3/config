@@ -11,6 +11,7 @@ set $wm_setting_key_right l
 
 set $wm_setting_app_terminal alacritty
 set $wm_setting_app_browser firefox
+set $wm_setting_browser_private_flag "--private-window"
 set $wm_setting_app_launcher "rofi -show drun"
 
 set $wm_setting_app_compositor picom
@@ -45,6 +46,8 @@ bindsym $mod+Return exec $wm_setting_app_terminal
 
 # Start a browser
 bindsym $mod+semicolon exec $wm_setting_app_browser
+# Start private window 
+bindsym $mod+apostrophe exec $wm_setting_app_browser $wm_setting_browser_private_flag
 
 # Start launcher
 bindsym $mod+slash exec $wm_setting_app_launcher
@@ -52,6 +55,9 @@ bindsym $mod+w exec "rofi -show window"
 
 # Run a window compositor (for effects like transparency or full VSync)
 exec_always --no-startup-id $wm_setting_app_compositor
+
+# Start fcitx input manager
+exec_always --no-startup-id "fcitx"
 
 ### Workspaces ###
 set $ws1 "1"
@@ -83,15 +89,6 @@ bindsym $mod+$smod+u move container to workspace number $ws1
 bindsym $mod+$smod+i move container to workspace number $ws2
 bindsym $mod+$smod+o move container to workspace number $ws3
 bindsym $mod+$smod+p move container to workspace number $ws4
-
-# Volume Bindings
-bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
-bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%-"
-bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%+"
-
-# Screen Brightness Bindings (depends on brightnessctl)
-bindsym XF86MonBrightnessUp exec "brightnessctl --class backlight set +10%"
-bindsym XF86MonBrightnessDown exec "brightnessctl --class backlight set 10%-"
 
 # Window resizing (in resize mode)
 mode "resize" {
@@ -149,6 +146,20 @@ bindsym $mod+$smod+f floating toggle
 
 # Kill the focused window
 bindsym $mod+q kill
+
+### System ###
+# Volume Bindings
+bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
+bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%-"
+bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 5%+"
+
+# Screen Brightness Bindings (depends on brightnessctl)
+bindsym XF86MonBrightnessUp exec "brightnessctl --class backlight set +10%"
+bindsym XF86MonBrightnessDown exec "brightnessctl --class backlight set 10%-"
+
+# Screen capture bindings
+bindsym Print exec "flameshot gui"
+bindsym $mod+Print exec "peek"
 
 # Restart i3 inplace
 bindsym $mod+$smod+r restart
