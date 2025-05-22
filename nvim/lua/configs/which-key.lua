@@ -47,8 +47,7 @@ M.config = function()
       name = "file",
       f = { "<cmd>Telescope find_files<CR>", "Find File" },
       g = { "<cmd>Telescope live_grep<CR>", "Live Grep" },
-      e = { "<cmd>Neotree toggle<CR>", "Toggle File Tree" },
-      o = { "<cmd>Neotree focus<CR>", "Focus File Tree" },
+      e = { "<cmd>lua MiniFiles.open()<CR>", "Toggle File Tree" },
     }
   }, { prefix = "<leader>" })
 end

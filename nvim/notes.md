@@ -18,7 +18,7 @@
 ### Workflows
 #### Intelligence
 1. Go to definition
-  - text: no alternate (search)
+  - text: find reference (search)
 1. Hover / peek definition
   - text: no alternate (live grep)
 1. Hover / peek signature
@@ -29,12 +29,13 @@
   - text: grep (file), visual selection, word under cursor, telescope
 1. Find warn / error (file) / searchable
   - text: only syntax?
-1. Find warn / error (workspace) / searchable (Telescope diagnostics?, not Trouble)
+1. Find warn / error (workspace, scope) / searchable (Telescope diagnostics?, not Trouble)
 1. Format file (manual, on save)
-1. Rename symbol under cursor (in file, in workspace)
+1. Rename symbol under cursor (in file, in workspace, in package / region)
   - text: search/replace (file, workspace)
 1. (autocompletion)
   - path
+  - proto messages
   - bazel targets
   - some sort of configurations? ssh hosts?
 1. (scrolling documentation in floating window)
@@ -95,10 +96,12 @@ Hard part: handling generated code by `bazel`.
 1. toggle file explorer
 1. move between tmux panes
 1. focus pane
+1. frecency search
 
 #### Sharing
 1. Screencast / ASCIICinema [DONE, separate, Docker]
 1. "Copy code section" -> System Text, Image [DONE, separate, Flameshot, tmux]
+    - need very good copy / paste support
 1. Get Github link for code file / lines
 1. Get Patch for current diff -> pastable
 

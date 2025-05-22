@@ -10,37 +10,10 @@ M.config = function()
     ensure_installed = {},
     sync_install = false,
     ignore_install = {},
-    -- highlight = {
-    --   enable = true,
-    --   additional_vim_regex_highlighting = false
-    -- },
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["aa"] = "@parameter.outer",
-          ["ia"] = "@parameter.inner",
-          ["am"] = "@block.outer",
-          ["im"] = "@block.inner"
-        }
-      },
-      move = {
-        enable = true,
-        goto_next_start = {
-          ["]f"] = "@function.outer",
-          ["]a"] = "@parameter.outer",
-        },
-        goto_prev_start = {
-          ["[f"] = "@function.outer",
-          ["[a"] = "@parameter.outer",
-        },
-      }
-    }
+    highlight = {
+      enable = { "markdown", "markdown_inline", "json", "go" },
+      additional_vim_regex_highlighting = false
+    },
   })
 end
 

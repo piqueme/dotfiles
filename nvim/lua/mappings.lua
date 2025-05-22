@@ -46,12 +46,29 @@ M.config = function()
   -- FILE AND STRING NAVIGATION
   map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", mapOpts)
   map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", mapOpts)
-  map("n", "<leader>fe", "<cmd>Neotree toggle<CR>", mapOpts)
-  map("n", "<leader>fo", "<cmd>Neotree focus<CR>", mapOpts)
+  map("n", "<leader>fe", "<cmd>lua MiniFiles.open()<CR>", mapOpts)
+
+  -- BROWSER
+  -- vim.keymap.set("n", "<leader>o", open_url_under_cursor, { noremap = true, silent = true })
 
   -- ANNOTATION AND DOCUMENTATION
   map("n", "<leader>ac", "<Plug>(comment_toggle_linewise_current)", mapOpts)
   map("v", "<leader>ac", "<Plug>(comment_toggle_linewise_visual)", mapOpts)
+
+  -- DEBUGGING
+  vim.keymap.set('n', '<leader>ds', function() require('dap').continue() end)
+  vim.keymap.set('n', '<leader>dr', function() require('dap').restart() end)
+  vim.keymap.set('n', '<leader>dp', function() require('dap').step_back() end)
+  vim.keymap.set('n', '<leader>do', function() require('dap').step_over() end)
+  vim.keymap.set('n', '<leader>di', function() require('dap').step_into() end)
+  vim.keymap.set('n', '<leader>dx', function() require('dap').step_out() end)
+  vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end)
+  vim.keymap.set('n', '<leader>dt', function() require('dap').terminate() end)
+
+  -- AI
+  vim.keymap.set({"n", "v"}, '<leader>na', "<cmd>CodeCompanionActions<CR>", mapOpts)
+  vim.keymap.set({"n", "v"}, '<leader>nc', "<cmd>CodeCompanionChat Toggle<CR>", mapOpts)
+  vim.keymap.set("v", '<leader>nn', "<cmd>CodeCompanionChat Add<CR>", mapOpts)
 end
 
 return M

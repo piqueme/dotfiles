@@ -91,6 +91,34 @@ M.config = function()
   lspconfig.terraform_lsp.setup {}
   lspconfig.tsserver.setup {}
   lspconfig.nil_ls.setup {}
+  lspconfig.rust_analyzer.setup {}
+  lspconfig.lua_ls.setup {}
+  lspconfig.marksman.setup {}
+
+  -- Set up clangd LSP only if it exists on the PATH.
+  -- Useful since our environment in Nix will change as we move around
+  -- projects.
+  if vim.fn.executable('clangd') == 1 then
+    lspconfig.clangd.setup {
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders"
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      -- TODO: Not great to have this hardcoded for all cases - ideally it's some project-level config
+      -- we expose.
+      root_dir = lspconfig.util.root_pattern(
+        'compile_commands.json',
+        'compile_flags.txt',
+        'CMakeLists.txt',
+        '.git'
+      )
+    }
+  end
 end
 
 return M

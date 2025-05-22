@@ -77,7 +77,9 @@ M.config = function()
     sources = {
       { name = "nvim_lsp" },
       { name = "buffer" },
-      { name = "path" }
+      { name = "path" },
+      { name = "copilot" },
+      { name = "lazydev", group_index = 0 },
     },
     mapper = {
     },
