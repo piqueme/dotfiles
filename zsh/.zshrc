@@ -22,15 +22,17 @@ source "$ANTIDOTE_DIR/antidote.zsh"
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
 
+eval "$(~/.local/bin/mise activate zsh)"
+
 # initialize zoxide if it's available. zoxide will enable convenient
 # directory jumping: see https://github.com/ajeetdsouza/zoxide
-if command -v zoxide; then
+if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
-# hook direnv if it's available. this makes it possible to automatically
-# source project-level environment variables when switched into a project's directory.
-# very useful for e.g. scoped development environments.
-if command -v direnv; then
-  eval "$(direnv hook zsh)"
+# Set up fzf keybindings for history search.
+if command -v fzf >/dev/null 2>&1; then
+  FZF_ALT_C_COMMAND=""
+  FZF_CTRL_T_COMMAND=""
+  source <(fzf --zsh)
 fi

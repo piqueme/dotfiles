@@ -1,0 +1,63 @@
+{
+  "border": "pixel",
+  "floating": "auto_off",
+  "layout": "splith",
+  "marks": [],
+  "percent": 1,
+  "type": "con",
+  "nodes": [
+    {
+      "border": "pixel",
+      "floating": "auto_off",
+      "layout": "tabbed",
+      "marks": [
+        "left"
+      ],
+      "percent": 0.5,
+      "type": "con",
+      "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 2,
+          "floating": "auto_off",
+          "marks": [],
+          "name": "browser",
+          "percent": 1.0,
+          "swallows": [
+             {
+               "class": "^browser$",
+               "instance": "^Navigator$"
+             }
+          ],
+          "type": "con"
+        }
+      ]
+    },
+    {
+      "border": "pixel",
+      "floating": "auto_off",
+      "layout": "tabbed",
+      "marks": [
+        "right"
+      ],
+      "percent": 0.5,
+      "type": "con",
+      "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 2,
+          "floating": "auto_off",
+          "name": "zsh",
+          "percent": 1.0,
+          "swallows": [
+             {
+               "class": "^masterterm$",
+               "instance": "^masterterm$"
+             }
+          ],
+          "type": "con"
+        }
+      ]
+    }
+  ]
+}

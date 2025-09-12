@@ -1,0 +1,969 @@
+{
+  "id": 32720688,
+  "type": "root",
+  "orientation": "horizontal",
+  "scratchpad_state": "none",
+  "percent": null,
+  "urgent": false,
+  "marks": [],
+  "focused": false,
+  "layout": "splith",
+  "workspace_layout": "default",
+  "last_split_layout": "splith",
+  "border": "pixel",
+  "current_border_width": -1,
+  "rect": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 1200
+  },
+  "deco_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "window_rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "name": "root",
+  "window_icon_padding": -1,
+  "window": null,
+  "window_type": null,
+  "nodes": [
+    {
+      "id": 32729024,
+      "type": "output",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 0.5,
+      "urgent": false,
+      "marks": [],
+      "focused": false,
+      "layout": "output",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "pixel",
+      "current_border_width": -1,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1200
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "name": "__i3",
+      "window_icon_padding": -1,
+      "window": null,
+      "window_type": null,
+      "nodes": [
+        {
+          "id": 32754208,
+          "type": "con",
+          "orientation": "horizontal",
+          "scratchpad_state": "none",
+          "percent": null,
+          "urgent": false,
+          "marks": [],
+          "focused": false,
+          "output": "__i3",
+          "layout": "splith",
+          "workspace_layout": "default",
+          "last_split_layout": "splith",
+          "border": "pixel",
+          "current_border_width": -1,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "deco_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "window_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "name": "content",
+          "window_icon_padding": -1,
+          "window": null,
+          "window_type": null,
+          "nodes": [
+            {
+              "id": 32757328,
+              "type": "workspace",
+              "orientation": "none",
+              "scratchpad_state": "none",
+              "percent": null,
+              "urgent": false,
+              "marks": [],
+              "focused": false,
+              "output": "__i3",
+              "layout": "splith",
+              "workspace_layout": "default",
+              "last_split_layout": "splith",
+              "border": "pixel",
+              "current_border_width": -1,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "deco_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "window_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "geometry": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "name": "__i3_scratch",
+              "window_icon_padding": -1,
+              "num": -1,
+              "gaps": {
+                "inner": 0,
+                "outer": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "window": null,
+              "window_type": null,
+              "nodes": [],
+              "floating_nodes": [],
+              "focus": [],
+              "fullscreen_mode": 1,
+              "sticky": false,
+              "floating": "auto_off",
+              "swallows": []
+            }
+          ],
+          "floating_nodes": [],
+          "focus": [
+            32757328
+          ],
+          "fullscreen_mode": 0,
+          "sticky": false,
+          "floating": "auto_off",
+          "swallows": []
+        }
+      ],
+      "floating_nodes": [],
+      "focus": [
+        32754208
+      ],
+      "fullscreen_mode": 0,
+      "sticky": false,
+      "floating": "auto_off",
+      "swallows": []
+    },
+    {
+      "id": 32760832,
+      "type": "output",
+      "orientation": "none",
+      "scratchpad_state": "none",
+      "percent": 0.5,
+      "urgent": false,
+      "marks": [],
+      "focused": false,
+      "layout": "output",
+      "workspace_layout": "default",
+      "last_split_layout": "splith",
+      "border": "pixel",
+      "current_border_width": -1,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1200
+      },
+      "deco_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "window_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "name": "eDP-1",
+      "window_icon_padding": -1,
+      "window": null,
+      "window_type": null,
+      "nodes": [
+        {
+          "id": 32763952,
+          "type": "dockarea",
+          "orientation": "none",
+          "scratchpad_state": "none",
+          "percent": null,
+          "urgent": false,
+          "marks": [],
+          "focused": false,
+          "output": "eDP-1",
+          "layout": "dockarea",
+          "workspace_layout": "default",
+          "last_split_layout": "splith",
+          "border": "pixel",
+          "current_border_width": -1,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 42
+          },
+          "deco_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "window_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "name": "topdock",
+          "window_icon_padding": -1,
+          "window": null,
+          "window_type": null,
+          "nodes": [
+            {
+              "id": 32787776,
+              "type": "con",
+              "orientation": "none",
+              "scratchpad_state": "none",
+              "percent": 1.0,
+              "urgent": false,
+              "marks": [],
+              "focused": false,
+              "output": "eDP-1",
+              "layout": "splith",
+              "workspace_layout": "default",
+              "last_split_layout": "splith",
+              "border": "pixel",
+              "current_border_width": 2,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 42
+              },
+              "deco_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "window_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 42
+              },
+              "geometry": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 42
+              },
+              "name": "polybar-bar_eDP-1",
+              "window_icon_padding": -1,
+              "window": 20971522,
+              "window_type": "unknown",
+              "window_properties": {
+                "class": "Polybar",
+                "instance": "polybar",
+                "title": "polybar-bar_eDP-1",
+                "transient_for": null
+              },
+              "nodes": [],
+              "floating_nodes": [],
+              "focus": [],
+              "fullscreen_mode": 0,
+              "sticky": true,
+              "floating": "auto_off",
+              "swallows": []
+            }
+          ],
+          "floating_nodes": [],
+          "focus": [
+            32787776
+          ],
+          "fullscreen_mode": 0,
+          "sticky": false,
+          "floating": "auto_off",
+          "swallows": [
+            {
+              "dock": 2,
+              "insert_where": 2
+            }
+          ]
+        },
+        {
+          "id": 32767360,
+          "type": "con",
+          "orientation": "horizontal",
+          "scratchpad_state": "none",
+          "percent": null,
+          "urgent": false,
+          "marks": [],
+          "focused": false,
+          "output": "eDP-1",
+          "layout": "splith",
+          "workspace_layout": "default",
+          "last_split_layout": "splith",
+          "border": "pixel",
+          "current_border_width": -1,
+          "rect": {
+            "x": 0,
+            "y": 42,
+            "width": 1920,
+            "height": 1158
+          },
+          "deco_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "window_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "name": "content",
+          "window_icon_padding": -1,
+          "window": null,
+          "window_type": null,
+          "nodes": [
+            {
+              "id": 32774096,
+              "type": "workspace",
+              "orientation": "horizontal",
+              "scratchpad_state": "none",
+              "percent": null,
+              "urgent": false,
+              "marks": [],
+              "focused": false,
+              "output": "eDP-1",
+              "layout": "splith",
+              "workspace_layout": "default",
+              "last_split_layout": "splith",
+              "border": "pixel",
+              "current_border_width": -1,
+              "rect": {
+                "x": 15,
+                "y": 57,
+                "width": 1890,
+                "height": 1128
+              },
+              "deco_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "window_rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "geometry": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              },
+              "name": "1",
+              "window_icon_padding": -1,
+              "num": 1,
+              "gaps": {
+                "inner": 0,
+                "outer": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "window": null,
+              "window_type": null,
+              "nodes": [
+                {
+                  "id": 32791184,
+                  "type": "con",
+                  "orientation": "none",
+                  "scratchpad_state": "none",
+                  "percent": 0.33333333333333331483,
+                  "urgent": false,
+                  "marks": [],
+                  "focused": true,
+                  "output": "eDP-1",
+                  "layout": "splith",
+                  "workspace_layout": "default",
+                  "last_split_layout": "splith",
+                  "border": "pixel",
+                  "current_border_width": 2,
+                  "rect": {
+                    "x": 15,
+                    "y": 57,
+                    "width": 630,
+                    "height": 1128
+                  },
+                  "deco_rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                  },
+                  "window_rect": {
+                    "x": 2,
+                    "y": 2,
+                    "width": 626,
+                    "height": 1124
+                  },
+                  "geometry": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 800,
+                    "height": 600
+                  },
+                  "name": "i3-msg -t get_tree",
+                  "window_icon_padding": -1,
+                  "window": 10485763,
+                  "window_type": "normal",
+                  "window_properties": {
+                    "class": "masterterm",
+                    "instance": "masterterm",
+                    "machine": "nixos",
+                    "title": "i3-msg -t get_tree",
+                    "transient_for": null
+                  },
+                  "nodes": [],
+                  "floating_nodes": [],
+                  "focus": [],
+                  "fullscreen_mode": 0,
+                  "sticky": false,
+                  "floating": "auto_off",
+                  "swallows": []
+                },
+                {
+                  "id": 32796240,
+                  "type": "con",
+                  "orientation": "none",
+                  "scratchpad_state": "none",
+                  "percent": 0.33333333333333331483,
+                  "urgent": false,
+                  "marks": [],
+                  "focused": false,
+                  "output": "eDP-1",
+                  "layout": "splith",
+                  "workspace_layout": "default",
+                  "last_split_layout": "splith",
+                  "border": "pixel",
+                  "current_border_width": 2,
+                  "rect": {
+                    "x": 645,
+                    "y": 57,
+                    "width": 630,
+                    "height": 1128
+                  },
+                  "deco_rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                  },
+                  "window_rect": {
+                    "x": 2,
+                    "y": 2,
+                    "width": 626,
+                    "height": 1124
+                  },
+                  "geometry": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 941,
+                    "height": 1124
+                  },
+                  "name": "i3: Layout saving in i3 — Mozilla Firefox",
+                  "window_icon_padding": -1,
+                  "window": 23068693,
+                  "window_type": "normal",
+                  "window_properties": {
+                    "class": "browser",
+                    "instance": "Navigator",
+                    "window_role": "browser",
+                    "machine": "nixos",
+                    "title": "i3: Layout saving in i3 — Mozilla Firefox",
+                    "transient_for": null
+                  },
+                  "nodes": [],
+                  "floating_nodes": [],
+                  "focus": [],
+                  "fullscreen_mode": 0,
+                  "sticky": false,
+                  "floating": "auto_off",
+                  "swallows": []
+                },
+                {
+                  "id": 32804848,
+                  "type": "con",
+                  "orientation": "horizontal",
+                  "scratchpad_state": "none",
+                  "percent": 0.33333333333333331483,
+                  "urgent": false,
+                  "marks": [],
+                  "focused": false,
+                  "output": "eDP-1",
+                  "layout": "splith",
+                  "workspace_layout": "default",
+                  "last_split_layout": "splith",
+                  "border": "pixel",
+                  "current_border_width": -1,
+                  "rect": {
+                    "x": 1275,
+                    "y": 57,
+                    "width": 630,
+                    "height": 1128
+                  },
+                  "deco_rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                  },
+                  "window_rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                  },
+                  "geometry": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                  },
+                  "name": null,
+                  "window_icon_padding": -1,
+                  "window": null,
+                  "window_type": null,
+                  "nodes": [
+                    {
+                      "id": 32828016,
+                      "type": "con",
+                      "orientation": "horizontal",
+                      "scratchpad_state": "none",
+                      "percent": 0.5,
+                      "urgent": false,
+                      "marks": [],
+                      "focused": false,
+                      "output": "eDP-1",
+                      "layout": "tabbed",
+                      "workspace_layout": "default",
+                      "last_split_layout": "splith",
+                      "border": "pixel",
+                      "current_border_width": -1,
+                      "rect": {
+                        "x": 1275,
+                        "y": 57,
+                        "width": 315,
+                        "height": 1128
+                      },
+                      "deco_rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "window_rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "geometry": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "name": null,
+                      "window_icon_padding": -1,
+                      "window": null,
+                      "window_type": null,
+                      "nodes": [
+                        {
+                          "id": 32830560,
+                          "type": "con",
+                          "orientation": "none",
+                          "scratchpad_state": "none",
+                          "percent": 1.0,
+                          "urgent": false,
+                          "marks": [],
+                          "focused": false,
+                          "output": "eDP-1",
+                          "layout": "splith",
+                          "workspace_layout": "default",
+                          "last_split_layout": "splith",
+                          "border": "pixel",
+                          "current_border_width": 2,
+                          "rect": {
+                            "x": 1275,
+                            "y": 57,
+                            "width": 315,
+                            "height": 1128
+                          },
+                          "deco_rect": {
+                            "x": 0,
+                            "y": 0,
+                            "width": 315,
+                            "height": 1
+                          },
+                          "window_rect": {
+                            "x": 2,
+                            "y": 2,
+                            "width": 311,
+                            "height": 1124
+                          },
+                          "geometry": {
+                            "x": 1275,
+                            "y": 57,
+                            "width": 315,
+                            "height": 1128
+                          },
+                          "name": "browser",
+                          "window_icon_padding": -1,
+                          "window": 6291456,
+                          "window_type": "unknown",
+                          "window_properties": {
+                            "title": "browser",
+                            "transient_for": null
+                          },
+                          "nodes": [],
+                          "floating_nodes": [],
+                          "focus": [],
+                          "fullscreen_mode": 0,
+                          "sticky": false,
+                          "floating": "auto_off",
+                          "swallows": [
+                            {
+                              "class": "^firefox$",
+                              "instance": "^Navigator$"
+                            }
+                          ]
+                        }
+                      ],
+                      "floating_nodes": [],
+                      "focus": [
+                        32830560
+                      ],
+                      "fullscreen_mode": 0,
+                      "sticky": false,
+                      "floating": "auto_off",
+                      "swallows": []
+                    },
+                    {
+                      "id": 32836608,
+                      "type": "con",
+                      "orientation": "horizontal",
+                      "scratchpad_state": "none",
+                      "percent": 0.5,
+                      "urgent": false,
+                      "marks": [],
+                      "focused": false,
+                      "output": "eDP-1",
+                      "layout": "tabbed",
+                      "workspace_layout": "default",
+                      "last_split_layout": "splith",
+                      "border": "pixel",
+                      "current_border_width": -1,
+                      "rect": {
+                        "x": 1590,
+                        "y": 57,
+                        "width": 315,
+                        "height": 1128
+                      },
+                      "deco_rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "window_rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "geometry": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      },
+                      "name": null,
+                      "window_icon_padding": -1,
+                      "window": null,
+                      "window_type": null,
+                      "nodes": [
+                        {
+                          "id": 32837088,
+                          "type": "con",
+                          "orientation": "none",
+                          "scratchpad_state": "none",
+                          "percent": 1.0,
+                          "urgent": false,
+                          "marks": [
+                            "left"
+                          ],
+                          "focused": false,
+                          "output": "eDP-1",
+                          "layout": "splith",
+                          "workspace_layout": "default",
+                          "last_split_layout": "splith",
+                          "border": "pixel",
+                          "current_border_width": 2,
+                          "rect": {
+                            "x": 1590,
+                            "y": 57,
+                            "width": 315,
+                            "height": 1128
+                          },
+                          "deco_rect": {
+                            "x": 0,
+                            "y": 0,
+                            "width": 315,
+                            "height": 1
+                          },
+                          "window_rect": {
+                            "x": 2,
+                            "y": 2,
+                            "width": 311,
+                            "height": 1124
+                          },
+                          "geometry": {
+                            "x": 1590,
+                            "y": 57,
+                            "width": 315,
+                            "height": 1128
+                          },
+                          "name": "zsh",
+                          "window_icon_padding": -1,
+                          "window": 6291460,
+                          "window_type": "unknown",
+                          "window_properties": {
+                            "title": "zsh",
+                            "transient_for": null
+                          },
+                          "nodes": [],
+                          "floating_nodes": [],
+                          "focus": [],
+                          "fullscreen_mode": 0,
+                          "sticky": false,
+                          "floating": "auto_off",
+                          "swallows": [
+                            {
+                              "class": "^masterterm$",
+                              "instance": "^masterterm$"
+                            }
+                          ]
+                        }
+                      ],
+                      "floating_nodes": [],
+                      "focus": [
+                        32837088
+                      ],
+                      "fullscreen_mode": 0,
+                      "sticky": false,
+                      "floating": "auto_off",
+                      "swallows": []
+                    }
+                  ],
+                  "floating_nodes": [],
+                  "focus": [
+                    32828016,
+                    32836608
+                  ],
+                  "fullscreen_mode": 0,
+                  "sticky": false,
+                  "floating": "auto_off",
+                  "swallows": []
+                }
+              ],
+              "floating_nodes": [],
+              "focus": [
+                32791184,
+                32796240,
+                32804848
+              ],
+              "fullscreen_mode": 1,
+              "sticky": false,
+              "floating": "auto_off",
+              "swallows": []
+            }
+          ],
+          "floating_nodes": [],
+          "focus": [
+            32774096
+          ],
+          "fullscreen_mode": 0,
+          "sticky": false,
+          "floating": "auto_off",
+          "swallows": []
+        },
+        {
+          "id": 32770688,
+          "type": "dockarea",
+          "orientation": "none",
+          "scratchpad_state": "none",
+          "percent": null,
+          "urgent": false,
+          "marks": [],
+          "focused": false,
+          "output": "eDP-1",
+          "layout": "dockarea",
+          "workspace_layout": "default",
+          "last_split_layout": "splith",
+          "border": "pixel",
+          "current_border_width": -1,
+          "rect": {
+            "x": 0,
+            "y": 1200,
+            "width": 1920,
+            "height": 0
+          },
+          "deco_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "window_rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "name": "bottomdock",
+          "window_icon_padding": -1,
+          "window": null,
+          "window_type": null,
+          "nodes": [],
+          "floating_nodes": [],
+          "focus": [],
+          "fullscreen_mode": 0,
+          "sticky": false,
+          "floating": "auto_off",
+          "swallows": [
+            {
+              "dock": 3,
+              "insert_where": 2
+            }
+          ]
+        }
+      ],
+      "floating_nodes": [],
+      "focus": [
+        32767360,
+        32763952,
+        32770688
+      ],
+      "fullscreen_mode": 0,
+      "sticky": false,
+      "floating": "auto_off",
+      "swallows": []
+    }
+  ],
+  "floating_nodes": [],
+  "focus": [
+    32760832,
+    32729024
+  ],
+  "fullscreen_mode": 0,
+  "sticky": false,
+  "floating": "auto_off",
+  "swallows": []
+}

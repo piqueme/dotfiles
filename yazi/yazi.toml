@@ -1,0 +1,13 @@
+[opener]
+open = [
+  { run = 'xdg-open "$@"', desc = "Open" },
+]
+open_images = [
+  { run = 'feh "$0"', desc = "Open Image Dir" },
+]
+
+[open]
+rules = [
+  { mime = "image/*", use = "open" },
+  { mime = "inode/directory", use = "open_images" },
+]

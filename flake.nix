@@ -3,14 +3,25 @@
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # TODO: Deduplicate with configuration.nix.
+      unfree = [
+        "discord" 
+        "claude-code"
+      ];
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = (pkg:
+          builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
+        );
+      };
     in {
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
       homeConfigurations = {
@@ -26,6 +37,7 @@
             ./nixos/configuration.nix 
             home-manager.nixosModules.home-manager {
               home-manager.users.obe = import ./nixos/home.nix;
+              home-manager.useGlobalPkgs = true;
             }
           ];
         };

@@ -1,5 +1,23 @@
 # This module provides some kick-ass Bazel functionality.
 #
+# DESIRED USE
+#   OP: Target Search (also multi-select!)
+#     paste
+#     build
+#     test
+#     run
+#   OP: Package Search (also multi-select!)
+#     paste
+#     build
+#     test 
+#     run
+#   Completion
+#   Option
+#     (bazel vs. buildifier)
+#     (key bindings)
+#     (enable aliases)
+#     (enable completion)
+#
 # Aliases:
 #   bb = bazel build
 #   bt = bazel test

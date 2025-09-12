@@ -9,7 +9,7 @@ set $wm_setting_key_down j
 set $wm_setting_key_up k
 set $wm_setting_key_right l
 
-set $wm_setting_app_terminal alacritty
+set $wm_setting_app_terminal wezterm
 set $wm_setting_app_browser firefox
 set $wm_setting_browser_private_flag "--private-window"
 set $wm_setting_app_launcher "rofi -show drun"
@@ -52,6 +52,7 @@ bindsym $mod+apostrophe exec $wm_setting_app_browser $wm_setting_browser_private
 # Start launcher
 bindsym $mod+slash exec $wm_setting_app_launcher
 bindsym $mod+w exec "rofi -show window"
+bindsym $mod+period exec "firefox_url_launcher"
 
 # Run a window compositor (for effects like transparency or full VSync)
 exec_always --no-startup-id $wm_setting_app_compositor
@@ -134,6 +135,9 @@ client.background	$wm_color_background
 # polybar configuration directory.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+### feh - background images ###
+exec_always --no-startup-id feh --bg-scale ~/.wallpaper/background_image.jpeg
+
 ### miscellaneous settings
 # use mouse+$mod for draggin floating windows
 floating_modifier $mod
@@ -166,3 +170,5 @@ bindsym $mod+$smod+r restart
 
 # Exit i3 (logs out of X session)
 bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+workspace_layout tabbed

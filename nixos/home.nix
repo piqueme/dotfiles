@@ -25,8 +25,17 @@ in {
     # Daily driver text editor
     pkgs.neovim
 
+    # Version control, lifeblood of the developer.
+    pkgs.jujutsu
+    # Pager for nicer diff functionality.
+    pkgs.delta
+    # CLI for interacting with Github.
+    pkgs.gh
+
     # Common network URL fetching tool.
     pkgs.curl
+    # Tool for querying gRPC services.
+    pkgs.grpcurl
     # Ergonomic JSON manipulation in the terminal.
     pkgs.jq
     # More usable quick text view (e.g. includes syntax highlighting vs. cat).
@@ -46,7 +55,9 @@ in {
     pkgs.nnn
 
     # GPT in your terminal: helpful for doc searching, code generation
-    pkgs.shell_gpt
+    pkgs.shell-gpt
+    # Agent for common programming tasks.
+    pkgs.claude-code
 
     # News: RSS Reader.
     pkgs.newsboat
@@ -69,11 +80,24 @@ in {
 
     # Javascript development.
     pkgs.yarn
-    pkgs.nodejs_18
+    pkgs.nodejs_22
+
+    # Python environment.
+    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      i3ipc
+    ]))
+
+    # Lua Language Server.
+    pkgs.lua-language-server
+  
+    # Markdown Language Server.
+    pkgs.marksman
+
 
     # C compilation support.
     # Should be moved to per-project eventually.
     pkgs.gcc
+    pkgs.gnumake
 
     # Go development support.
     # Should be moved to per-project eventually.
@@ -84,12 +108,20 @@ in {
     # Bazel.
     # Also probably better per-project.
     pkgs.bazel
+    pkgs.bazelisk
+
+    # Useful for general system scripting.
+    pkgs.sqlite
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+    # Tool for synchronizing files between devices.
+    # Helpful for e.g. synchronizing notes between mobile and home workstation.
+    pkgs.syncthing
   ];
 
   home.file = {
@@ -138,6 +170,11 @@ in {
   # and so automatically sources environment variables here correctly.
   home.sessionVariables = {};
 
+  # Adjust the path with helper scripts.
+  home.sessionPath = [
+    "${dotdir}/scripts"
+  ];
+  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -175,6 +212,8 @@ in {
         "${zdotdir}/plugins/fzf-bazel"
         "${zdotdir}/plugins/fzf-git"
         "${zdotdir}/functions kind:fpath"
+        "${zdotdir}/plugins/ai"
+        "${zdotdir}/plugins/titler"
       ];
     };
     # NOTE: This needs to go in initExtraFirst to ensure the prompt loads quickly.
@@ -189,5 +228,54 @@ in {
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
       eval "$(zoxide init zsh)"
     '';
+  };
+
+  programs.nushell = {
+    enable = true;
+    # The config.nu can be anywhere you want if you like to edit your Nushell with Nu
+    configFile.source = ../nushell/config.nu;
+    # for editing directly to config.nu 
+    extraConfig = ''
+     let carapace_completer = {|spans|
+     carapace $spans.0 nushell ...$spans | from json
+     }
+     $env.config = {
+      show_banner: false,
+      completions: {
+      case_sensitive: false # case-sensitive completions
+      quick: true    # set to false to prevent auto-selecting completions
+      partial: true    # set to false to prevent partial filling of the prompt
+      algorithm: "fuzzy"    # prefix or fuzzy
+      external: {
+      # set to false to prevent nushell looking into $env.PATH to find more suggestions
+          enable: true 
+      # set to lower can improve completion performance at the cost of omitting some options
+          max_results: 100 
+          completer: $carapace_completer # check 'carapace_completer' 
+        }
+      }
+     } 
+     $env.PATH = ($env.PATH | 
+     split row (char esep) |
+     prepend /home/myuser/.apps |
+     append /usr/bin/env
+     )
+     '';
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+      character = { 
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+    };
   };
 }

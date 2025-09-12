@@ -1,4 +1,4 @@
-"general.import" = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+# "general.import" = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 
 [font]
 size = 12.0

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports =
@@ -47,19 +47,24 @@
   # Language Support
   # Ideally should get this working, but
   # for whatever reason the addons do not get installed.
-  i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [
-      anthy
-      libpinyin
-    ];
-  };
+  # i18n.inputMethod = {
+  #   enabled = "ibus";
+  #   ibus.engines = with pkgs.ibus-engines; [
+  #     anthy
+  #     libpinyin
+  #   ];
+  # };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
     ipafont
     kochi-substitute
   ];
+
+  services.displayManager = {
+    # Use i3 window manager for display management.
+    defaultSession = "none+i3";
+  };
 
   services.xserver = {
     # Enable the X11 windowing system.
@@ -70,14 +75,7 @@
       xterm.enable = false;
     };
 
-    # Keyboard layout
-    layout = "us";
-    xkbVariant = "";
-    
-    # Use i3 window manager for display management.
     displayManager = {
-      defaultSession = "none+i3";
-      
       sessionCommands = ''
       # Load user default Xmodmap for keyboard layout adjustments, e.g. caps -> ctrl
       [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
@@ -87,14 +85,20 @@
       '';
     };
 
+    # Keyboard layout
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    
     windowManager.i3 = {
      enable = true;
     };
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  # sound.enable = true;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -122,6 +126,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "discord"
+      "claude-code"
+    ];
   
   # Package overrides
   nixpkgs.config.packageOverrides = pkgs: rec {
@@ -138,17 +147,21 @@
     # PDF Viewer
     evince
     # Image Gallery Viewer (e.g. for Gifs)
-    cinnamon.pix
+    pix
     # Basic editor
     vim
     # Web browser
     firefox
+    # Another web browser because some apps are annoyingly chrome-focused
+    google-chrome
     # Terminal
     alacritty
     # Version control system
     git
     # Status bar
     polybar
+    # General X input / env simulation
+    xdotool
     # Application launcher w/ nice UI
     rofi
     # Minimal screen lock for i3
@@ -164,6 +177,8 @@
     flameshot
     # animated screen recorder
     peek
+    # communication, potentially could be user-package
+    discord
   ];
 
   # Make ZSH available as a system package.

@@ -5,7 +5,7 @@
  *******************************************************************************/
 
 * {
-    font:   "JetBrainsMono Nerd Font Mono 18";
+    font:   "JetBrainsMono Nerd Font Mono 16";
 
     bg0:     #212121;
     bg1:     #404040;
@@ -24,7 +24,7 @@
 
 window {
     location:   center;
-    width:      480;
+    width:      720;
 
     background-color:   @bg0;
 }
@@ -58,8 +58,8 @@ listview {
 }
 
 element {
-    padding:    12px 42px;
-    spacing:    8px;
+    padding:    9px 42px;
+    spacing:    6px;
 }
 
 element normal normal {
